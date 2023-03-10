@@ -1,0 +1,17 @@
+{
+  "name": "aom",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/vue": "^2.1.0",
+    "astro": "^2.1.2",
+    "vue": "^3.2.30"
+  }
+}

@@ -1,0 +1,53 @@
+<template>
+    <div class="IntroductionContainer">
+        <div class="IntroductionItem">
+            <div class="IntroductionItemLeft">
+                <h1>
+                    The ArmoLab's Onemanager Theme <br /> ( AOM )
+                </h1>
+                <DiskList />
+            </div>
+            <div class="IntroductionItemRight">
+                <img src="/images/fufu512.png" alt="" />
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script setup>
+import DiskList from "./DiskList.vue";
+</script>
+
+<style scoped>
+
+    .IntroductionContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        
+        height: 100vh;
+        width: 80%;
+        max-width: 1250px;
+
+    }
+    .IntroductionItem {
+        
+        justify-content: center;
+        align-items: center;
+
+        flex: 1 1;
+        display: flex;
+    }
+    .IntroductionItemLeft h1 {
+        background-image: linear-gradient(to left, #FF8F00, #e8e970);
+        color: rgba(0,0,0,0);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+    .IntroductionItemLeft, .IntroductionItemRight {
+        width: 50%;
+    }
+
+</style>

@@ -1,0 +1,30 @@
+---
+import Nav from "../components/NavBar.vue"
+import Introduction from "../components/Introduction.vue"
+import "../assets/base.css"
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>ArmoLab's Onemanager theme</title>
+		<script>
+			addEventListener("DOMContentLoaded", function () {
+				document.body.classList.add("loaded");
+			});
+		</script>
+	</head>
+	<body>
+		<Nav />
+		<main>
+			<!-- <article>
+				<h1>ArmoLab's Onemanager theme</h1>
+			</article> -->
+			<Introduction />
+
+		</main>
+	</body>
+</html>
