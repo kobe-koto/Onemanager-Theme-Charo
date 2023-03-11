@@ -1,0 +1,97 @@
+---
+	import Login from "./fa-icons/login.astro"
+    import Menu from "./fa-icons/bars.astro"
+	const { SiteName } = Astro.props;
+---
+
+<header>
+	<span class="button menu" onclick="OpenSideBar()"><Menu color="#f8f8ff"/></span>
+
+    <div class="Header">
+
+		<span class="title">
+        	<a href="/" set:html={SiteName}></a>
+    	</span>
+
+		<span class="space-between"></span>
+
+		<div class="CurrentDriveName">(CurrentDriveName 仍在開發中)</div>
+
+    </div>
+
+	<span class="button login" onclick="location.assign('/?login=admin')"><Login color="#f8f8ff"/></span>
+</header>
+
+<script is:inline>
+function OpenSideBar () {
+    console.log("A not functional function just be triggered.")
+}
+</script>
+
+<style>
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        background-color: rgba(25, 104, 106, .6);
+        padding: 10px 0;
+        color: #f8f8ff;
+        z-index: 128;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+    }
+	span.menu {
+		margin-left: 6px;
+	}
+	span.login {
+		margin-right: 6px;
+	}
+	header > span.button {
+		transition: all .3s ease;
+		cursor: pointer;
+		display: inline-block;
+		border-radius: 50%;
+		height: 50px;
+		min-width: 50px;
+		max-width: 50px;
+		line-height: 50px;
+		text-align: center;
+	}
+	header > span.button:hover {
+		background-color: rgba(128,128,128,.5);
+	}
+	header > span.button:active {
+		transform: scale(.95);
+	}
+
+
+    div.Header {
+        display: flex;
+        justify-content: space-between;
+		width: 80%;
+		margin: 0 10%;
+		max-width: 1250px
+	}
+	@media (max-width: 600px) {
+		div.Header {
+			display: block;
+			text-align: center;
+		}
+		div.Header > div.CurrentDriveName {
+			display: none;
+		}
+	}
+
+/*	@media (max-width: 800px) {
+		div.MultiDisk {
+			display: none;
+		}
+	}
+	*/
+
+</style>

@@ -1,32 +1,210 @@
 ---
-import Nav from "../components/NavBar.vue"
-import Introduction from "../components/Introduction.vue"
 import "../assets/base.css"
+
+import Nav from "../components/NavBar.astro"
+import PathBar from "../components/PathBar.astro"
+
+
+// base Components
+import Divider from "../components/base/Divider.astro"
+
+// container
+import ContentContainer from "../components/ContentContainer.astro"
+import LinkContainer from "../components/base/LinkContainer.astro"
 ---
 
-<html lang="en">
+<!--IconValuesStart-->
+
+<!--
+
+{
+    "music":"musical-notes",
+    "video":"logo-youtube",
+    "img":"image",
+    "office":"newspaper",
+    "txt":"clipboard",
+    "zip":"file-tray-full",
+    "iso":"disc",
+    "apk":"logo-android",
+    "exe":"logo-windows",
+    "default":"document"
+}
+
+-->
+
+<!--IconValuesEnd-->
+
+
+<html lang="<!--constStr@language-->">
 	<head>
 		<meta charset="utf-8" />
-        
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="keywords" content="<!--Keywords-->" />
         <meta name="description" content="<!--Description-->" />
         <link rel="icon" href="<!--base_path-->favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="<!--base_path-->favicon.ico" type="image/x-icon" />
-
         <title><!--Title--></title>
-		<script>
-			addEventListener("DOMContentLoaded", function () {
-				document.body.classList.add("loaded");
-			});
-		</script>
+
+
+        <!--MdRequireStart-->
+            <link rel="stylesheet" href="/aom-assets/depends/marked/github-markdown.css">
+            <script type="text/javascript" src="/aom-assets/depends/marked/marked.js"></script>
+        <!--MdRequireEnd-->
+
+        <!--customCss-->
 	</head>
 	<body>
-		<Nav />
+		<Nav SiteName="<!--Sitename-->" />
 		<main>
+
+		    <!--HeadomfStart-->
+		        <ContentContainer>
+                    <div class="customfile" id="head-om">
+                        <!--HeadomfContent-->
+                    </div>
+		        </ContentContainer>
+            <!--HeadomfEnd-->
+            <!--HeadmdStart-->
+                <ContentContainer>
+                    <div class="markdown-body" id="head">
+                        <textarea id="head-md" style="display:none;"><!--HeadmdContent--></textarea>
+                    </div>
+                </ContentContainer>
+            <!--HeadmdEnd-->
+
+
+
+		    <ContentContainer>
+            <div>
+
+                <PathBar />
+
+                <Divider />
+                <h3><!--constStr@File--></h3>
+
+                
+
+                <!--IsFolderStart-->
+
+                <div style="display: flex; justify-content: space-between;margin: 0 5%;padding: 0 10px" id= "<!--FolderId-->">
+                    <div style="width: 60%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><!--constStr@File--></div>
+                    <div style="width: 20%;text-align: right;"><!--constStr@EditTime--></div>
+                    <div style="width: 20%;text-align: right;"><!--constStr@Size--></div>
+                </div>
+
+
+
+                    <!--FolderListStart-->
+                    <LinkContainer href="<!--FileEncodeReplaceUrl-->/">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div
+                                style="width: 60%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"
+                                fileid="<!--FileId-->"
+                            >
+                                <!--FileEncodeReplaceName-->
+                            </div>
+                            <div style="width: 20%;text-align: right;">
+                                <!--lastModifiedDateTime-->
+                            </div>
+                            <div style="width: 20%;text-align: right;">
+                                <!--size-->
+                            </div>
+                        </div>
+                    </LinkContainer>
+                    <!--FolderListEnd-->
+
+
+
+                    <!--FileListStart-->
+                    <LinkContainer href="<!--FileEncodeReplaceUrl-->?preview">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div
+                            style="width: 60%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"
+                                fileid="<!--FileId-->"
+                            >
+                                <!--FileEncodeReplaceName-->
+                            </div>
+                            <div
+                                style="width: 20%;text-align: right;"
+                            >
+                                <!--lastModifiedDateTime-->
+                            </div>
+                            <div
+                                style="width: 20%;text-align: right;"
+                            >
+                                <!--size-->
+                            </div>
+                        </div>
+                    </LinkContainer>
+                    <!--FileListEnd-->
+
+
+                <!--IsFolderEnd-->
+
+                </div>
+
+
+
+
+
+
+<!--MorePageStart-->
+<form action="" method="POST" id="nextpageform">
+    <input type="hidden" id="pagenum" name="pagenum" value="">
+    <table width=100% border=0>
+        <tr>
+            <td width=60px align=center>
+<!--PrePageStart-->
+                <a onclick="nextpage(<!--PrePageNum-->);"><!--constStr@PrePage--></a>
+<!--PrePageEnd-->
+            </td>
+            <td class="updated_at">
+<!--MorePageListStart-->
+                <a onclick="nextpage(<!--PageNum-->);"><!--PageNum--></a>
+<!--MorePageListEnd-->
+<!--MorePageListNowStart-->
+                <font color=red><!--PageNum--></font>
+<!--MorePageListNowEnd-->
+            </td>
+            <td width=60px align=center>
+<!--NextPageStart-->
+                <a onclick="nextpage(<!--NextPageNum-->);"><!--constStr@NextPage--></a>
+<!--NextPageEnd-->
+            </td>
+        </tr>
+    </table>
+</form>
+<!--MorePageEnd-->
+
+
+
+                
+
+
+
+                
+
+
+		    </ContentContainer>
             
-            
+
+
+            <!--ReadmemdStart-->
+		        <ContentContainer>
+                    <div class="markdown-body" id="readme">
+                        <textarea id="readme-md" style="display:none;"><!--ReadmemdContent--></textarea>
+                    </div>
+		        </ContentContainer>
+            <!--ReadmemdEnd-->
+            <!--FootomfStart-->
+		        <ContentContainer>
+                    <div class="customfile" id="foot-om">
+                        <!--FootomfContent-->
+                    </div>
+		        </ContentContainer>
+            <!--FootomfEnd-->
 
 		</main>
 	</body>
+	<!--customScript-->
 </html>

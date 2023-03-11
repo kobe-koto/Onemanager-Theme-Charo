@@ -1,0 +1,12 @@
+# idea
+/.idea/shelf/
+/.idea/workspace.xml
+/.idea/httpRequests/
+
+# pnpm moudles
+/node_modules/
+/node_modules.linux/
+/node_modules.windows/
+
+# dist
+/dist/

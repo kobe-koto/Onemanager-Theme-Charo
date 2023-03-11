@@ -1,6 +1,6 @@
 ---
-import Nav from "../components/NavBar.vue"
-import Introduction from "../components/Introduction.vue"
+import Nav from "../components/NavBar.astro"
+import Introduction from "../components/Introduction.astro"
 import "../assets/base.css"
 ---
 
@@ -11,18 +11,10 @@ import "../assets/base.css"
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>ArmoLab's Onemanager theme</title>
-		<script>
-			addEventListener("DOMContentLoaded", function () {
-				document.body.classList.add("loaded");
-			});
-		</script>
 	</head>
 	<body>
-		<Nav />
+		<Nav SiteName="ArmoLab OM"/>
 		<main>
-			<!-- <article>
-				<h1>ArmoLab's Onemanager theme</h1>
-			</article> -->
 			<Introduction />
 
 		</main>
