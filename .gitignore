@@ -1,0 +1,7 @@
+# 默认忽略的文件
+/.idea/shelf/
+/.idea/workspace.xml
+# 基于编辑器的 HTTP 客户端请求
+/.idea/httpRequests/
+# pnpm moudles
+/node_modules/

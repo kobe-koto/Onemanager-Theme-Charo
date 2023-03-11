@@ -13,8 +13,12 @@ body {
 }
 
 main {
-    margin: 0 auto;
+    margin: 100px auto;
     color: #ffffff;
+}
+
+div.ContentsContainer:last-child {
+    margin-bottom: 0!important;
 }
 
 /*noinspection CssOverwrittenProperties*/

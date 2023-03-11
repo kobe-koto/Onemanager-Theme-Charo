@@ -1,26 +1,43 @@
 <template>
+	<script src="/main.js"></script>
     <header>
-        <span class="title">
-            <a href="/">ArmoLab OM</a>
-        </span>
-        <nav class="menu">
-            <a 
-                v-for="item in navigation" 
-                :key="item.name" 
-                :href="item.href" 
-                :class="[item.current ? 'current' : '']"
-            >
-            {{ item.name }}
-        </a>
-        </nav>
+
+		<span class="button menu" onclick="OpenSideBar()"><Menu color="#f8f8ff"/></span>
+
+        <div class="Header">
+
+			<span class="title">
+            	<a href="/">ArmoLab OM</a>
+        	</span>
+
+			<span class="space-between"></span>
+
+<!--			&lt;!&ndash;MultiDiskAreaStart&ndash;&gt;-->
+<!--        	<div class="MultiDisk">-->
+<!--				&lt;!&ndash;MultiDisksStart&ndash;&gt;-->
+<!--				<span>-->
+<!--					<a href="&lt;!&ndash;MultiDisksUrl&ndash;&gt;" class="&lt;!&ndash;MultiDisksNow&ndash;&gt;">&lt;!&ndash;MultiDisksName&ndash;&gt;</a>-->
+<!--				</span>-->
+<!--				&lt;!&ndash;MultiDisksEnd&ndash;&gt;-->
+
+<!--				<a id="ListItem" onclick="HandleListItemClick(this)">-->
+<!--        	        <ListItem color="#ffffff" />-->
+<!--        	    </a>-->
+
+<!--        	</div>-->
+<!--			&lt;!&ndash;MultiDiskAreaEnd&ndash;&gt;-->
+
+			<div class="CurrentDriveName">(CurrentDriveName 仍在開發中)</div>
+
+        </div>
+
+		<span class="button login" onclick="location.assign('/?login=admin')"><Login color="#f8f8ff"/></span>
     </header>
 </template>
-  
+
 <script setup>
-    const navigation = [
-        { name: 'Home',       current: true,     href: 'javascript:void(0)'},
-        { name: 'Admin-Panel',   current: false,    href: 'javascript:alert("沒有寫捏")'},
-    ]
+    import Login from "./fa-icons/login.vue"
+    import Menu from "./fa-icons/bars.vue"
 </script>
 
 <style scoped>
@@ -32,87 +49,79 @@
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         background-color: rgba(25, 104, 106, .6);
-        padding: 15px 0;
+        padding: 10px 0;
         color: #f8f8ff;
         z-index: 128;
+
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
     }
-    span.title {
-        margin-left: 15px;
-        letter-spacing: 2px;
-        opacity: 0;
-        transition: opacity,letter-spacing ease 0.85s;
-    }
-    nav.menu {
-        opacity: 0;
-        transition: opacity ease 0.35s;
-        margin-right: 15px;
-        float: right;
-    }
-    body.loaded span.title {
-        letter-spacing: 0px;
-        opacity: 1;
-    }
-    body.loaded nav.menu {
-        opacity: 1;
-    }
-    nav.menu > a:not(:last-child) {
-        margin-right: 10px;
-    }
-    nav.menu > a.current {
-        margin-bottom: -10px;
-    }
-    nav.menu > a.current::after {
-        position: relative;
-        top: -10px;
-        left: 5px;
-        z-index: -1;
-        width: 100%;
-        height: 10px;
-        border-radius: 5px;
-        opacity: .35;
-        background-color: #00ffff;
-    }
-    nav.menu > a.current:hover::after {
-        -webkit-animation: shake 0.3s ease;
-        animation: shake .45s linear;
-    }
-    @-webkit-keyframes shake {
-        0%, 100% {
-            -webkit-transform: translateX(0px);
-        }
-        33% {
-            -webkit-transform: translateX(-1px);
-        }
-        66% {
-            -webkit-transform: translateX(1px);
-        }
-    }
-    @keyframes shake {
-        0%, 100% {
-            transform: translateX(0px);
-        }
-        33% {
-            transform: translateX(-1px);
-        }
-        66% {
-            transform: translateX(1px);
-        }
-    }
-    @media (max-width: 600px)  {
-        header {
-            text-align: center;
-        }
-        span.title, nav.menu {
-            display: block;
-            width: 100%;
-            float: none;
-        }
-        span.title {
-            margin-left: 0;
-        }
-        nav.menu {
-            margin-right: 0;
-            margin-top: 5px;
-        }
-    }
+	span.menu {
+		margin-left: 6px;
+	}
+	span.login {
+		margin-right: 6px;
+	}
+	header > span.button {
+		transition: all .3s ease;
+		cursor: pointer;
+		display: inline-block;
+		border-radius: 50%;
+		height: 50px;
+		min-width: 50px;
+		max-width: 50px;
+		line-height: 50px;
+		text-align: center;
+	}
+	header > span.button:hover {
+		background-color: rgba(128,128,128,.5);
+	}
+	header > span.button:active {
+		transform: scale(.95);
+	}
+
+
+    div.Header {
+        display: flex;
+        justify-content: space-between;
+		width: 80%;
+		margin: 0 10%;
+		max-width: 1250px
+	}
+	@media (max-width: 600px) {
+		div.Header {
+			display: block;
+			text-align: center;
+		}
+		div.Header > div.CurrentDriveName {
+			display: none;
+		}
+	}
+
+/*	@media (max-width: 800px) {
+		div.MultiDisk {
+			display: none;
+		}
+	}
+	div.MultiDisk > span:not(:last-child) {
+		margin-right: 8px;
+	}
+	div.MultiDisk a.now {
+		transition: transform .25s ease;
+		-webkit-transition: -webkit-transform .3s ease;
+		!*font-size: larger;*!
+		font-weight: bold;
+		background-color: rgba(128, 128, 128, .5);
+		border-radius: 15px;
+		padding: 3px 12px;
+	}
+	div.MultiDisk a.now::after {
+		display: none;
+	}
+	div.MultiDisk a.now:hover {
+		transform: scale(1.05);
+		-webkit-transform: scale(1.05);
+	}*/
+
 </style>

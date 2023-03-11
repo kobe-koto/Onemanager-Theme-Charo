@@ -2,30 +2,94 @@
 import Nav from "../components/NavBar.vue"
 import Introduction from "../components/Introduction.vue"
 import "../assets/base.css"
+
+import ContentContainer from "../components/ContentContainer.vue"
 ---
 
-<html lang="en">
+<!--IconValuesStart-->
+
+<!--
+
+{
+    "music":"musical-notes",
+    "video":"logo-youtube",
+    "img":"image",
+    "office":"newspaper",
+    "txt":"clipboard",
+    "zip":"file-tray-full",
+    "iso":"disc",
+    "apk":"logo-android",
+    "exe":"logo-windows",
+    "default":"document"
+}
+
+-->
+
+<!--IconValuesEnd-->
+
+
+<html lang="<!--constStr@language-->">
 	<head>
 		<meta charset="utf-8" />
-        
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="keywords" content="<!--Keywords-->" />
         <meta name="description" content="<!--Description-->" />
         <link rel="icon" href="<!--base_path-->favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="<!--base_path-->favicon.ico" type="image/x-icon" />
-
+        <script src="/main.js"></script>
         <title><!--Title--></title>
-		<script>
-			addEventListener("DOMContentLoaded", function () {
-				document.body.classList.add("loaded");
-			});
-		</script>
+
+        <link rel="stylesheet" href="/github-markdown.css">
+        <script type="text/javascript" src="/marked.js"></script>
+
+        <!--customCss-->
 	</head>
 	<body>
 		<Nav />
 		<main>
+
+
+
+		    <!--HeadomfStart-->
+		        <ContentContainer>
+                    <div class="customfile" id="head-om">
+                        <!--HeadomfContent-->
+                    </div>
+		        </ContentContainer>
+            <!--HeadomfEnd-->
+            <!--HeadmdStart-->
+                <ContentContainer>
+                    <div class="markdown-body" id="head">
+                        <textarea id="head-md" style="display:none;"><!--HeadmdContent--></textarea>
+                    </div>
+                </ContentContainer>
+            <!--HeadmdEnd-->
+
+
+
+		    <ContentContainer>
+		        <h1>File list should appear in here</h1>
+		        <h2>A example headline-2 for ContentContainer</h2>
+		        <p>A example paragraph for ContentContainer</p>
+		        <p>A example paragraph for ContentContainer</p>
+		    </ContentContainer>
             
-            
+
+
+            <!--ReadmemdStart-->
+		        <ContentContainer>
+                    <div class="markdown-body" id="readme">
+                        <textarea id="readme-md" style="display:none;"><!--ReadmemdContent--></textarea>
+                    </div>
+		        </ContentContainer>
+            <!--ReadmemdEnd-->
+            <!--FootomfStart-->
+		        <ContentContainer>
+                    <div class="customfile" id="foot-om">
+                        <!--FootomfContent-->
+                    </div>
+		        </ContentContainer>
+            <!--FootomfEnd-->
 
 		</main>
 	</body>
