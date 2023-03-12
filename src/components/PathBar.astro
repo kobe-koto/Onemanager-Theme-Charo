@@ -1,0 +1,25 @@
+---
+// icons
+import Home from "../components/fa-icons/home.astro"
+import Slash from "../components/fa-icons/chevron-right.astro"
+
+// container
+import ButtonContainer from "../components/ButtonContainer.astro"
+import IconContainer from "../components/IconContainer.astro"
+---
+
+<ButtonContainer href="<!--base_path-->">
+    <Home color="#f8f8ff" />
+</ButtonContainer>
+
+<!--DiskPathArrayStart-->
+
+<IconContainer>
+    <Slash color="#f8f8ff" />
+</IconContainer>
+
+<ButtonContainer href="<!--PathArrayLink-->" is:raw>
+    <!--PathArrayName-->
+</ButtonContainer>
+
+<!--DiskPathArrayEnd-->

@@ -1,28 +1,29 @@
-<button class="UglyButton">
+---
+	const { href } = Astro.props
+---
+
+<a class="UglyButton" href={href}>
     <slot />
-</button>
+</a>
 
 
 <style>
-
-
-    /* button.UglyButton:not((:last-child)) {
-		margin-right: 8px;
-	} */
-
-
-	button.UglyButton {
+	.UglyButton {
+		display: inline-block;
         cursor: pointer;
 		-webkit-transition: -webkit-transform .25s ease-in-out;
 		transition: transform .25s ease;
 		background-color: rgba(128, 128, 128, .5);
 		border-radius: 16px;
-        padding: 10px 12px;
+        padding: 8px 12px;
 		user-select: none;
 	}
-	button.UglyButton:hover {
+	.UglyButton:hover {
 		-webkit-transform: scale(1.1);
 		transform: scale(1.1);
 	}
-
+	.UglyButton::after {
+		content: none !important;
+		display: none !important;
+	}
 </style>

@@ -2,16 +2,14 @@
 import "../assets/base.css"
 
 import Nav from "../components/NavBar.astro"
-import ContentContainer from "../components/ContentContainer.vue"
+import PathBar from "../components/PathBar.astro"
 
 
-// icons
-import Home from "../components/fa-icons/home.vue"
-import Slash from "../components/fa-icons/chevron-right.astro"
+// base Components
+import Divider from "../components/Divider.astro"
 
-import ButtonContainer from "../components/ButtonContainer.astro"
-import IconContainer from "../components/IconContainer.astro"
-
+// container
+import ContentContainer from "../components/ContentContainer.astro"
 ---
 
 <!--IconValuesStart-->
@@ -60,7 +58,7 @@ import IconContainer from "../components/IconContainer.astro"
 
 		    <!--HeadomfStart-->
 		        <ContentContainer>
-                    <div class="customfile" id="hNad-om">
+                    <div class="customfile" id="head-om">
                         <!--HeadomfContent-->
                     </div>
 		        </ContentContainer>
@@ -77,20 +75,97 @@ import IconContainer from "../components/IconContainer.astro"
 
 		    <ContentContainer>
 
-                <ButtonContainer>
-                    <Home color="#f8f8ff" />
-                </ButtonContainer>
-                <IconContainer>
-                    <Slash color="#f8f8ff" />
-                </IconContainer>
+                <PathBar />
+
+                <Divider />
+                <h3><!--constStr@File--></h3>
+
+                <ContentContainer>
+                    <div style="display: flex; justify-content: space-between;">
+    
+                    </div>
+                </ContentContainer>
+                <!--FolderId-->
+
+                
+<!--IsFolderStart-->
+<table class="list-table" id="list-table">
+    <tr id="tr0">
+        <th class="file">
+            <a id="file_a0" fileid="<!--FolderId-->" onclick="sortby('a');"><!--constStr@File--></a>
+<!--ShowThumbnailsStart-->
+            &nbsp;&nbsp;&nbsp;
+            <label><input type="checkbox" id="originalpic"><!--constStr@OriginalPic--></label>
+            <button onclick="showthumbnails(this);"><!--constStr@ShowThumbnails--></button>
+<!--ShowThumbnailsEnd-->
+            &nbsp;
+            <button onclick="CopyAllDownloadUrl('.download');"><!--constStr@CopyAllDownloadUrl--></button>
+        </th>
+        <th class="updated_at"><a onclick="sortby('time');"><!--constStr@EditTime--></a></th>
+        <th class="size"><a onclick="sortby('size');"><!--constStr@Size--></a></th>
+    </tr>
+    <!-- Dirs -->
+<!--FolderListStart-->
+    <tr data-to id="tr<!--filenum-->">
+        <td class="file">
+            <ion-icon name="folder"></ion-icon>
+            <a id="file_a<!--filenum-->" name="folderlist" href="<!--FileEncodeReplaceUrl-->/" fileid="<!--FileId-->"><!--FileEncodeReplaceName--></a>
+        </td>
+        <td class="updated_at" id="folder_time<!--filenum-->"><!--lastModifiedDateTime--></td>
+        <td class="size" id="folder_size<!--filenum-->"><!--size--></td>
+    </tr>
+<!--FolderListEnd-->
+<!--FileListStart-->
+    <tr data-to id="tr<!--filenum-->">
+        <td class="file">
+
+            <ion-icon name="<!--IconValue-->"></ion-icon>
+            <a id="file_a<!--filenum-->" name="filelist" href="<!--FileEncodeReplaceUrl-->?preview" fileid="<!--FileId-->" target=_blank><!--FileEncodeReplaceName--></a>
+            <a class="download" href="<!--FileEncodeReplaceUrl-->"><ion-icon name="download"></ion-icon></a>
+        </td>
+        <td class="updated_at" id="file_time<!--filenum-->"><!--lastModifiedDateTime--></td>
+        <td class="size" id="file_size<!--filenum-->"><!--size--></td>
+    </tr>
+<!--FileListEnd-->
+</table>
+<!--MorePageStart-->
+<form action="" method="POST" id="nextpageform">
+    <input type="hidden" id="pagenum" name="pagenum" value="">
+    <table width=100% border=0>
+        <tr>
+            <td width=60px align=center>
+<!--PrePageStart-->
+                <a onclick="nextpage(<!--PrePageNum-->);"><!--constStr@PrePage--></a>
+<!--PrePageEnd-->
+            </td>
+            <td class="updated_at">
+<!--MorePageListStart-->
+                <a onclick="nextpage(<!--PageNum-->);"><!--PageNum--></a>
+<!--MorePageListEnd-->
+<!--MorePageListNowStart-->
+                <font color=red><!--PageNum--></font>
+<!--MorePageListNowEnd-->
+            </td>
+            <td width=60px align=center>
+<!--NextPageStart-->
+                <a onclick="nextpage(<!--NextPageNum-->);"><!--constStr@NextPage--></a>
+<!--NextPageEnd-->
+            </td>
+        </tr>
+    </table>
+</form>
+<!--MorePageEnd-->
+<!--IsFolderEnd-->
 
 
-		        <h1>File list should appear in here</h1>
-		        <h2>A example headline-2 for ContentContainer</h2>
-		        <p>A example paragraph for ContentContainer</p>
-		        <p>A example paragraph for ContentContainer</p>
 
-                <h3 class="table-header"><a href="<!--base_path-->"><!--constStr@Home--></a><!--DiskPathArrayStart--> / <a href="<!--PathArrayLink-->"><!--PathArrayName--></a><!--DiskPathArrayEnd--></h3>
+                
+
+
+
+                
+
+
 		    </ContentContainer>
             
 
