@@ -80,24 +80,50 @@ import ContentContainer from "../components/ContentContainer.astro"
                 <Divider />
                 <h3><!--constStr@File--></h3>
 
-                <ContentContainer>
-                    <div style="display: flex; justify-content: space-between;">
-    
-                    </div>
-                </ContentContainer>
-                <!--FolderId-->
-
                 
-<!--IsFolderStart-->
+                <div style="display: flex; justify-content: space-between;margin: 0 5%;padding: 0 10px">
+                    <div style="width: 60%;">File<!--constStr@File--></div>
+                    <div style="width: 20%;text-align: right;">EditTime<!--constStr@EditTime--></div>
+                    <div style="width: 20%;text-align: right;">size<!--constStr@Size--></div>
+                </div>
+
+                <!--IsFolderStart-->
+
+                    <ContentContainer>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="width: 60%;">file.tar.gz</div>
+                            <div style="width: 20%;text-align: right;">2023/01/01</div>
+                            <div style="width: 20%;text-align: right;">114.5MB</div>
+                        </div>
+                    </ContentContainer>
+                    <ContentContainer>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="width: 60%;">file.tar.gz</div>
+                            <div style="width: 20%;text-align: right;">2023/01/01</div>
+                            <div style="width: 20%;text-align: right;">1919.8MB</div>
+                        </div>
+                    </ContentContainer>
+                    <!--FolderId-->
+                        
+                        
+                        
+                        
+
+                <!--IsFolderEnd-->
+                
+
+<!-- SortBy planed -->
+
+<!-- ShowThumbnailsStart-->
+<label><input type="checkbox" id="originalpic"><!--constStr@OriginalPic--></label>
+<button onclick="showthumbnails(this);"><!--constStr@ShowThumbnails--></button>
+<!--ShowThumbnailsEnd -->
+
 <table class="list-table" id="list-table">
     <tr id="tr0">
         <th class="file">
             <a id="file_a0" fileid="<!--FolderId-->" onclick="sortby('a');"><!--constStr@File--></a>
-<!--ShowThumbnailsStart-->
-            &nbsp;&nbsp;&nbsp;
-            <label><input type="checkbox" id="originalpic"><!--constStr@OriginalPic--></label>
-            <button onclick="showthumbnails(this);"><!--constStr@ShowThumbnails--></button>
-<!--ShowThumbnailsEnd-->
+
             &nbsp;
             <button onclick="CopyAllDownloadUrl('.download');"><!--constStr@CopyAllDownloadUrl--></button>
         </th>
@@ -155,7 +181,6 @@ import ContentContainer from "../components/ContentContainer.astro"
     </table>
 </form>
 <!--MorePageEnd-->
-<!--IsFolderEnd-->
 
 
 
