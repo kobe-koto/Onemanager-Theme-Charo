@@ -1,0 +1,18 @@
+<span class="UglyIcon">
+    <slot />
+</span>
+
+
+<style>
+	span.UglyIcon {
+		-webkit-transition: -webkit-transform .25s ease-in-out;
+		transition: transform .25s ease;
+		border-radius: 16px;
+        padding: 10px 12px;
+		user-select: none;
+	}
+	span.UglyIcon:hover {
+		-webkit-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+</style>

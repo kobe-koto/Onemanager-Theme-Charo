@@ -1,16 +1,19 @@
-<template>
-	<script src="/main.js"></script>
-    <header>
+---
+	import Login from "./fa-icons/login.vue"
+    import Menu from "./fa-icons/bars.astro"
+	const { SiteName } = Astro.props;
+---
 
-		<span class="button menu" onclick="OpenSideBar()"><Menu color="#f8f8ff"/></span>
+<header>
 
-        <div class="Header">
+	<span class="button menu" onclick="OpenSideBar()"><Menu color="#f8f8ff"/></span>
+    <div class="Header">
 
-			<span class="title">
-            	<a href="/">ArmoLab OM</a>
-        	</span>
+		<span class="title">
+        	<a href="/" set:html={SiteName}></a>
+    	</span>
 
-			<span class="space-between"></span>
+		<span class="space-between"></span>
 
 <!--			&lt;!&ndash;MultiDiskAreaStart&ndash;&gt;-->
 <!--        	<div class="MultiDisk">-->
@@ -27,20 +30,20 @@
 <!--        	</div>-->
 <!--			&lt;!&ndash;MultiDiskAreaEnd&ndash;&gt;-->
 
-			<div class="CurrentDriveName">(CurrentDriveName 仍在開發中)</div>
+	<div class="CurrentDriveName">(CurrentDriveName 仍在開發中)</div>
 
-        </div>
+    </div>
 
-		<span class="button login" onclick="location.assign('/?login=admin')"><Login color="#f8f8ff"/></span>
-    </header>
-</template>
+	<span class="button login" onclick="location.assign('/?login=admin')"><Login color="#f8f8ff"/></span>
+</header>
 
-<script setup>
-    import Login from "./fa-icons/login.vue"
-    import Menu from "./fa-icons/bars.vue"
+<script is:inline>
+function OpenSideBar () {
+    console.log("A not functional function just be triggered.")
+}
 </script>
 
-<style scoped>
+<style>
     header {
         position: fixed;
         top: 0;
@@ -104,24 +107,6 @@
 			display: none;
 		}
 	}
-	div.MultiDisk > span:not(:last-child) {
-		margin-right: 8px;
-	}
-	div.MultiDisk a.now {
-		transition: transform .25s ease;
-		-webkit-transition: -webkit-transform .3s ease;
-		!*font-size: larger;*!
-		font-weight: bold;
-		background-color: rgba(128, 128, 128, .5);
-		border-radius: 15px;
-		padding: 3px 12px;
-	}
-	div.MultiDisk a.now::after {
-		display: none;
-	}
-	div.MultiDisk a.now:hover {
-		transform: scale(1.05);
-		-webkit-transform: scale(1.05);
-	}*/
+	*/
 
 </style>

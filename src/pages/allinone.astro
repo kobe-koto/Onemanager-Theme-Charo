@@ -1,9 +1,17 @@
 ---
-import Nav from "../components/NavBar.vue"
-import Introduction from "../components/Introduction.vue"
 import "../assets/base.css"
 
+import Nav from "../components/NavBar.astro"
 import ContentContainer from "../components/ContentContainer.vue"
+
+
+// icons
+import Home from "../components/fa-icons/home.vue"
+import Slash from "../components/fa-icons/chevron-right.astro"
+
+import ButtonContainer from "../components/ButtonContainer.astro"
+import IconContainer from "../components/IconContainer.astro"
+
 ---
 
 <!--IconValuesStart-->
@@ -36,23 +44,23 @@ import ContentContainer from "../components/ContentContainer.vue"
         <meta name="description" content="<!--Description-->" />
         <link rel="icon" href="<!--base_path-->favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="<!--base_path-->favicon.ico" type="image/x-icon" />
-        <script src="/main.js"></script>
         <title><!--Title--></title>
 
-        <link rel="stylesheet" href="/github-markdown.css">
-        <script type="text/javascript" src="/marked.js"></script>
+
+        <!--MdRequireStart-->
+            <link rel="stylesheet" href="/depends/marked/github-markdown.css">
+            <script type="text/javascript" src="/depends/marked/marked.js"></script>
+        <!--MdRequireEnd-->
 
         <!--customCss-->
 	</head>
 	<body>
-		<Nav />
+		<Nav SiteName="<!--Sitename-->" />
 		<main>
-
-
 
 		    <!--HeadomfStart-->
 		        <ContentContainer>
-                    <div class="customfile" id="head-om">
+                    <div class="customfile" id="hNad-om">
                         <!--HeadomfContent-->
                     </div>
 		        </ContentContainer>
@@ -68,10 +76,21 @@ import ContentContainer from "../components/ContentContainer.vue"
 
 
 		    <ContentContainer>
+
+                <ButtonContainer>
+                    <Home color="#f8f8ff" />
+                </ButtonContainer>
+                <IconContainer>
+                    <Slash color="#f8f8ff" />
+                </IconContainer>
+
+
 		        <h1>File list should appear in here</h1>
 		        <h2>A example headline-2 for ContentContainer</h2>
 		        <p>A example paragraph for ContentContainer</p>
 		        <p>A example paragraph for ContentContainer</p>
+
+                <h3 class="table-header"><a href="<!--base_path-->"><!--constStr@Home--></a><!--DiskPathArrayStart--> / <a href="<!--PathArrayLink-->"><!--PathArrayName--></a><!--DiskPathArrayEnd--></h3>
 		    </ContentContainer>
             
 
@@ -93,4 +112,5 @@ import ContentContainer from "../components/ContentContainer.vue"
 
 		</main>
 	</body>
+	<!--customScript-->
 </html>
