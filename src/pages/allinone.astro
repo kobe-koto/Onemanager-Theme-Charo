@@ -1,16 +1,21 @@
 ---
 import "../assets/base.css"
 
-import Nav from "../components/NavBar.astro"
-import PathBar from "../components/PathBar.astro"
-
 
 // base Components
 import Divider from "../components/base/Divider.astro"
 
 // container
-import ContentContainer from "../components/ContentContainer.astro"
+import ContentContainer from "../components/base/ContentContainer.astro"
 import LinkContainer from "../components/base/LinkContainer.astro"
+
+
+
+import Nav from "../components/NavBar.astro"
+import PathBar from "../components/PathBar.astro"
+import MorePage from "components/MorePage.astro"
+
+
 ---
 
 <!--IconValuesStart-->
@@ -138,52 +143,11 @@ import LinkContainer from "../components/base/LinkContainer.astro"
                     </LinkContainer>
                     <!--FileListEnd-->
 
+                    <MorePage />
 
                 <!--IsFolderEnd-->
 
                 </div>
-
-
-
-
-
-
-<!--MorePageStart-->
-<form action="" method="POST" id="nextpageform">
-    <input type="hidden" id="pagenum" name="pagenum" value="">
-    <table width=100% border=0>
-        <tr>
-            <td width=60px align=center>
-<!--PrePageStart-->
-                <a onclick="nextpage(<!--PrePageNum-->);"><!--constStr@PrePage--></a>
-<!--PrePageEnd-->
-            </td>
-            <td class="updated_at">
-<!--MorePageListStart-->
-                <a onclick="nextpage(<!--PageNum-->);"><!--PageNum--></a>
-<!--MorePageListEnd-->
-<!--MorePageListNowStart-->
-                <font color=red><!--PageNum--></font>
-<!--MorePageListNowEnd-->
-            </td>
-            <td width=60px align=center>
-<!--NextPageStart-->
-                <a onclick="nextpage(<!--NextPageNum-->);"><!--constStr@NextPage--></a>
-<!--NextPageEnd-->
-            </td>
-        </tr>
-    </table>
-</form>
-<!--MorePageEnd-->
-
-
-
-                
-
-
-
-                
-
 
 		    </ContentContainer>
             

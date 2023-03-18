@@ -1,0 +1,75 @@
+---
+// container
+import ButtonContainer from "components/base/ButtonContainer.astro"
+
+// icons
+import ArrowRight from "components/fa-icons/arrow-right.astro"
+import ArrowLeft from "components/fa-icons/arrow-left.astro"
+---
+
+
+<!--MorePageStart-->
+<form class="MorePage" action="" method="POST" id="nextpageform">
+    <input type="hidden" id="pagenum" name="pagenum" value="">
+
+    <div>
+        <div>
+            <!--PrePageStart-->
+            <ButtonContainer onclick="nextpage(<!--PrePageNum-->);">
+                <ArrowLeft color="#f8f8ff" />
+            </ButtonContainer>
+            <!--PrePageEnd-->
+        </div>
+        <div class="updated_at">
+            <!--MorePageListStart-->
+                            <a onclick="nextpage(<!--PageNum-->);"><!--PageNum--></a>
+            <!--MorePageListEnd-->
+            
+            <!--MorePageListNowStart-->
+                            <a style="font-size: larger;"><!--PageNum--></a>
+            <!--MorePageListNowEnd-->
+    </div>
+        <div>
+            <!--NextPageStart-->
+            <ButtonContainer onclick="nextpage(<!--NextPageNum-->);">
+                <ArrowRight color="#f8f8ff" />
+            </ButtonContainer>
+            <!--NextPageEnd-->
+        </div>
+    </div>
+</form>
+
+
+<script is:inline>
+function nextpage(num) {
+    document.getElementById('pagenum').value=num;
+    document.getElementById('nextpageform').submit();
+}
+</script>
+<!--MorePageEnd-->
+
+<style>
+    .MorePage {
+        margin-top: 20px;
+    }
+    .MorePage > div {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+    .MorePage > div div:first-child {
+        float: left;
+        margin-right: 5px;
+    }
+    .MorePage > div div:last-child {
+        float: right;
+        margin-left: 5px;
+    }
+    .MorePage > div div:nth-child(2) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>

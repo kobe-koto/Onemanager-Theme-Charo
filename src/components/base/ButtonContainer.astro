@@ -1,8 +1,8 @@
 ---
-	const { href } = Astro.props
+	const { href, onclick, disabled } = Astro.props;
 ---
 
-<a class="UglyButton" href={href}>
+<a class="UglyButton" href={href} onclick={onclick} data-disabled={`${disabled}`}>
     <slot />
 </a>
 
@@ -18,7 +18,7 @@
         padding: 8px 12px;
 		user-select: none;
 	}
-	.UglyButton:hover {
+	.UglyButton:not([data-disabled="true"]):hover {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
         box-shadow: #6a6a6a 1spx 1px 20px 0px;
@@ -26,5 +26,10 @@
 	.UglyButton::after {
 		content: none !important;
 		display: none !important;
+	}
+
+	.UglyButton[data-disabled="true"] {
+		cursor: not-allowed;
+		opacity: 0.65;
 	}
 </style>
