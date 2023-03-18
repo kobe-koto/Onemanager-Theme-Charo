@@ -1,12 +1,12 @@
 ---
-	import Login from "./fa-icons/login.vue"
+	import Login from "./fa-icons/login.astro"
     import Menu from "./fa-icons/bars.astro"
 	const { SiteName } = Astro.props;
 ---
 
 <header>
-
 	<span class="button menu" onclick="OpenSideBar()"><Menu color="#f8f8ff"/></span>
+
     <div class="Header">
 
 		<span class="title">
@@ -15,22 +15,7 @@
 
 		<span class="space-between"></span>
 
-<!--			&lt;!&ndash;MultiDiskAreaStart&ndash;&gt;-->
-<!--        	<div class="MultiDisk">-->
-<!--				&lt;!&ndash;MultiDisksStart&ndash;&gt;-->
-<!--				<span>-->
-<!--					<a href="&lt;!&ndash;MultiDisksUrl&ndash;&gt;" class="&lt;!&ndash;MultiDisksNow&ndash;&gt;">&lt;!&ndash;MultiDisksName&ndash;&gt;</a>-->
-<!--				</span>-->
-<!--				&lt;!&ndash;MultiDisksEnd&ndash;&gt;-->
-
-<!--				<a id="ListItem" onclick="HandleListItemClick(this)">-->
-<!--        	        <ListItem color="#ffffff" />-->
-<!--        	    </a>-->
-
-<!--        	</div>-->
-<!--			&lt;!&ndash;MultiDiskAreaEnd&ndash;&gt;-->
-
-	<div class="CurrentDriveName">(CurrentDriveName 仍在開發中)</div>
+		<div class="CurrentDriveName">(CurrentDriveName 仍在開發中)</div>
 
     </div>
 

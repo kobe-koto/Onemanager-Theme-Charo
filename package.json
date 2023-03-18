@@ -5,15 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node ./script/replacer.js",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/vue": "^2.1.0",
     "@babel/core": "^7.21.0",
-    "astro": "^2.1.2",
-    "vite": "^4.1.4",
-    "vue": "^3.2.30"
+    "astro": "^2.1.2"
   }
 }
