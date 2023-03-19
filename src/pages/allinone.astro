@@ -7,14 +7,12 @@ import Divider from "../components/base/Divider.astro"
 
 // container
 import ContentContainer from "../components/base/ContentContainer.astro"
-import LinkContainer from "../components/base/LinkContainer.astro"
-
-
 
 import Nav from "../components/NavBar.astro"
 import PathBar from "../components/PathBar.astro"
-import MorePage from "components/MorePage.astro"
 
+import IsFolder from "../components/IsFolder.astro"
+import IsFile from "../components/IsFile.astro"
 
 ---
 
@@ -74,78 +72,37 @@ import MorePage from "components/MorePage.astro"
                     <div class="markdown-body" id="head">
                         <textarea id="head-md" style="display:none;"><!--HeadmdContent--></textarea>
                     </div>
+
+                    <script>
+                        var $head = document.getElementById("head");
+                        if ($head) {
+                            $head.innerHTML = marked(document.getElementById('head-md').innerText);
+                        }
+                    </script>
                 </ContentContainer>
             <!--HeadmdEnd-->
 
 
 
 		    <ContentContainer>
-            <div>
+                <div>
 
-                <PathBar />
+                    <PathBar />
 
-                <Divider />
-                <h3><!--constStr@File--></h3>
+                    <Divider />
+                    <h3><!--constStr@File--></h3>
+    
 
-                
-
-                <!--IsFolderStart-->
-
-                <div style="display: flex; justify-content: space-between;margin: 0 5%;padding: 0 10px" id= "<!--FolderId-->">
-                    <div style="width: 60%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"><!--constStr@File--></div>
-                    <div style="width: 20%;text-align: right;"><!--constStr@EditTime--></div>
-                    <div style="width: 20%;text-align: right;"><!--constStr@Size--></div>
-                </div>
+                    <!--IsFolderStart-->
+                    <IsFolder />
+                    <!--IsFolderEnd-->
 
 
-
-                    <!--FolderListStart-->
-                    <LinkContainer href="<!--FileEncodeReplaceUrl-->/">
-                        <div style="display: flex; justify-content: space-between;">
-                            <div
-                                style="width: 50%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"
-                                data-FileId="<!--FileId-->"
-                            >
-                                <!--FileEncodeReplaceName-->
-                            </div>
-                            <div style="width: 30%;text-align: right;">
-                                <!--lastModifiedDateTime-->
-                            </div>
-                            <div style="width: 20%;text-align: right;">
-                                <!--size-->
-                            </div>
-                        </div>
-                    </LinkContainer>
-                    <!--FolderListEnd-->
+                    <!--IsFileStart-->
+                        <IsFile />
+                    <!--IsFileEnd-->
 
 
-
-                    <!--FileListStart-->
-                    <LinkContainer href="<!--FileEncodeReplaceUrl-->?preview">
-                        <div style="display: flex; justify-content: space-between;">
-                            <div
-                            style="width: 50%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;"
-                                data-FileId="<!--FileId-->"
-                            >
-                                <!--FileEncodeReplaceName-->
-                            </div>
-                            <div
-                                style="width: 30%;text-align: right;"
-                            >
-                                <!--lastModifiedDateTime-->
-                            </div>
-                            <div
-                                style="width: 20%;text-align: right;"
-                            >
-                                <!--size-->
-                            </div>
-                        </div>
-                    </LinkContainer>
-                    <!--FileListEnd-->
-
-                    <MorePage />
-
-                <!--IsFolderEnd-->
 
                 </div>
 
@@ -158,6 +115,13 @@ import MorePage from "components/MorePage.astro"
                     <div class="markdown-body" id="readme">
                         <textarea id="readme-md" style="display:none;"><!--ReadmemdContent--></textarea>
                     </div>
+
+                    <script>
+                        var $readme = document.getElementById('readme');
+                        if ($readme) {
+                            $readme.innerHTML = marked(document.getElementById('readme-md').innerText);
+                        }
+                    </script>
 		        </ContentContainer>
             <!--ReadmemdEnd-->
             <!--FootomfStart-->
