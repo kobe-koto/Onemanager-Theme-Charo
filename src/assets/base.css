@@ -4,13 +4,9 @@ body {
     margin: 0;
 }
 
-body {
+/* body {
     background-color: #002021;
-    /* background-image: linear-gradient(15deg, #13547a, #13547a, #80d0c7);
-    background-size: 200% 200%;
-    animation: Gradients 5s ease infinite;
-    background-attachment: fixed; */
-}
+} */
 
 main {
     margin: 100px auto;
@@ -22,11 +18,6 @@ div.ContentsContainer:last-child {
 }
 
 /*noinspection CssOverwrittenProperties*/
-article {
-    width: 90%;
-    width: min(1000px,90%);
-    margin: 0 auto;
-}
 
 button {
     border: none;
@@ -51,16 +42,4 @@ a:link::after, a:visited::after {
 a:link:hover::after, a:visited:hover::after {
     width: 100%;
     margin: 0 auto 0 0;
-}
-
-@keyframes Gradients {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }

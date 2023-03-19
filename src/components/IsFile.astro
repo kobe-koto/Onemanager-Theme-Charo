@@ -1,0 +1,170 @@
+---
+import ButtonContainer from "./base/ButtonContainer.astro";
+
+---
+<div style="text-align: center; width=90%;margin: 0 auto; padding: 15px 5px;">
+
+    <!--IsOtherFileStart-->
+    <p><!--constStr@FileNotSupport--></p>
+    <!--IsOtherFileEnd-->
+
+    <code id="url" title="url">
+        <!--FileEncodeUrl-->
+    </code>
+    <ButtonContainer href="<!--FileEncodeUrl-->">
+        <span>Download<!--constStr@Download--></span>
+    </ButtonContainer>
+    <script is:inline>
+        var $url = document.getElementById('url');
+        if ($url) {
+            let url = location.href;
+            url = url.slice(0, url.length-8);
+            $url.innerHTML = url.replace(/&amp;/g, '&amp;amp;');
+            $url.style.height = $url.scrollHeight + 'px';
+        }
+    </script>
+
+
+    <!--IstxtFileStart-->
+        <textarea class="code" id="txt-render" readonly>
+            <!--TxtContent-->
+        </textarea>
+        <script is:inline>
+            document.getElementById("txt-render").style.height = $textarea.scrollHeight + "px";
+        </script>
+    <!--IstxtFileEnd-->
+
+
+    <!--IsimgFileStart-->
+    <br />
+    <img
+        src="<!--FileEncodeUrl-->"
+        alt="<!--FileName-->"
+        style="margin: 10px 0;"
+        onload="
+            if (this.offsetWidth>document.getElementById('url').offsetWidth) this.style.width='100%';
+            if (this.offsetHeight>document.documentElement.clientHeight) this.style.height=document.documentElement.clientHeight + 'px';
+        "
+    />
+    <!--IsimgFileEnd-->
+
+
+    <!--IsvideoFileStart-->
+        <div id="dplayer-video" style="margin: 10px 0;" data-src="<!--FileEncodeUrl-->"></div>
+        <script src="/aom-assets/DPlayer/DPlayer.min.js" is:inline></script>
+        <script is:inline>
+            const DPlayerObject = new DPlayer({
+                container: document.getElementById("dplayer-video"),
+                video: {
+                    url: document.getElementById("dplayer-video").getAttribute("data-src"),
+                },
+            });
+
+        </script>
+    <!--IsvideoFileEnd-->
+
+
+    <!--IsmusicFileStart-->
+        <audio src="<!--FileDownUrl-->" controls="controls" style="width: 100%;margin: 10px 0;"></audio>
+    <!--IsmusicFileEnd-->
+
+
+    <!--IsofficeFileStart-->
+        <iframe style="margin: 10px 0; border: none; width: 100%; height: 800px" id="office-render" src="https://view.officeapps.live.com/op/view.aspx?src=<!--FileEncodeDownUrl-->"></iframe>
+    <!--IsofficeFileEnd-->
+
+
+
+    <!--IspdfFileStart-->
+        <div id="pdf-render">Loading PDF</div>
+        <script src="/aom-assets/PDF/pdf.min.js" is:inline></script>
+        <script is:inline>
+            pdfjsLib.GlobalWorkerOptions.workerSrc = "/aom-assets/PDF/pdf.worker.min.js";
+            var loadingTask = pdfjsLib.getDocument({
+                url: "<!--FileDownUrl-->",
+                disableStream: true,
+                disableAutoFetch: true,
+                rangeChunkSize: 65535
+            });
+            loadingTask.promise.then(function(pdf) {
+                var pdfContainer = document.getElementById('pdf-render');
+                pdfContainer.innerHTML = '';
+                var pagenum =  pdf.numPages;
+                var pagepos = 1;
+                var pdfnextpagebutton = document.createElement('button');
+                pdfnextpagebutton.id = 'pdfnextpagebutton';
+                pdfnextpagebutton.innerText = 'Load page ' + pagepos + '-' + (pagepos+4<pagenum?pagepos+4:pagenum) + ' (' + pagenum + ')';
+                pdfnextpagebutton.setAttribute('onclick', "this.style.display = 'none';");
+                pdfnextpagebutton.style.display = 'none';
+                pdfContainer.appendChild(pdfnextpagebutton);
+                var pdfWaitNextPage = setInterval(function(){
+                    if (pdfnextpagebutton.style.display==='none') {
+                        for (var i=pagepos;i<=(pagepos+4<pagenum?pagepos+4:pagenum);i++) {
+                            var canvasNew = document.createElement('canvas');
+                            canvasNew.id = 'pdf-c'+i;
+                            pdfContainer.appendChild(canvasNew);
+                            renderpage(pdf,i);
+                        }
+                        pagepos = i;
+                        if (pagepos<pagenum) {
+                            console.log("next page: " + pagepos + " / " + pagenum);
+                            pdfnextpagebutton.innerText = 'Load page ' + pagepos + '-' + (pagepos+4<pagenum?pagepos+4:pagenum) + ' (' + pagenum + ')';
+                            pdfnextpagebutton.style.display ='';
+                            pdfContainer.appendChild(pdfnextpagebutton);
+                        } else {
+                            console.log("end of pdf");
+                            clearInterval(pdfWaitNextPage);
+                        }
+                    }
+                }, 1000);
+            });
+            function renderpage(pdf,i) {
+                pdf.getPage(i).then(function(page) { 
+                    var scale = 1.5;
+                    var viewport = page.getViewport({ scale: scale, });
+                    var canvas = document.getElementById('pdf-c'+i);
+                    var context = canvas.getContext("2d");
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    var renderContext = {
+                        canvasContext: context,
+                        viewport: viewport,
+                    };
+                    page.render(renderContext);
+                });
+            }
+        </script>
+    <!--IspdfFileEnd-->
+
+</div>
+
+<style>
+    code, .code {
+        display: block; 
+        box-sizing: border-box; 
+        background-color: #232323; 
+        color: #f8f8ff;
+        width: 100%; 
+        margin:10px 0; 
+        padding: 12px;
+
+        text-align: left; 
+        border-radius: 5px; 
+        font-family: 'JetBrains Mono', Monospace, sans-serif;
+
+        resize: none;
+        border: none;
+    }
+</style>
+<style is:inline>
+#pdf-render {
+    box-sizing: border-box;
+    max-width: 100%;
+    height: 75vh;
+    overflow: auto;
+}
+#pdf-render canvas {
+    width: 100%;
+}
+    
+</style>
