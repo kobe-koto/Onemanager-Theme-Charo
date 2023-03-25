@@ -28,7 +28,6 @@
 
     }
     .IntroductionItem {
-        
         justify-content: center;
         align-items: center;
 
@@ -36,10 +35,13 @@
         display: flex;
     }
     .IntroductionItemLeft h1 {
-        background-image: linear-gradient(to left, #FF8F00, #e8e970);
+        background-image: linear-gradient(-45deg, #FF8F00, #e8e970);
         color: rgba(0,0,0,0);
         -webkit-background-clip: text;
         background-clip: text;
+    }
+    body[theme="Light"] .IntroductionItemLeft h1 {
+        background-image: linear-gradient(-45deg, #588ebe, #9b46c5);
     }
     .IntroductionItemLeft, .IntroductionItemRight {
         width: 50%;

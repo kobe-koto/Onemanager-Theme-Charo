@@ -4,29 +4,35 @@ body {
     margin: 0;
 }
 
-body {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
 *:focus {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-user-modify: read-write-plaintext-only; 
 }
 
 body {
-    background-color: #002021;
+    color: #f8f8ff;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background-color: #1f1f1f;
+    /* #28292a */
+    transition: all .45s ease;
+}
+body[theme="Light"] {
+    background-color: #f8f8ff;
+    /* #f8fafd */
+    color: #1f1f1f;
 }
 
 main {
     margin: 100px auto;
-    color: #ffffff;
 }
 
 div.ContentsContainer:last-child {
     margin-bottom: 0!important;
 }
 
-/*noinspection CssOverwrittenProperties*/
+body[theme="Light"] svg {
+    fill: #1f1f1f !important;
+}
 
 button {
     border: none;
@@ -42,7 +48,7 @@ a:link::after, a:visited::after {
     width: 0;
     height: 1px;
     display: block;
-    background: #f8f8ff;
+    background-color: #f8f8ff;
     margin: 0 0 0 auto;
 
     -webkit-transition: width 0.3s ease;
@@ -51,4 +57,11 @@ a:link::after, a:visited::after {
 a:link:hover::after, a:visited:hover::after {
     width: 100%;
     margin: 0 auto 0 0;
+}
+
+body[theme="Light"] a:link, body[theme="Light"] a:visited {
+    color: #1f1f1f;
+}
+body[theme="Light"] a:link::after, body[theme="Light"] a:visited::after {
+    background-color: #1f1f1f;
 }

@@ -2,7 +2,7 @@
 	import Login from "./fa-icons/login.astro"
     import Menu from "./fa-icons/bars.astro"
 	import ThemeSwitcher from "./base/ThemeSwitcher.astro"
-	const { SiteName } = Astro.props;
+	const { SiteName, IconURL } = Astro.props;
 ---
 
 <header>
@@ -15,8 +15,8 @@
     <div class="Header">
 
 		<a class="title" href="/">
-			<img src="/aom-assets/images/fufu512.png" alt="">
-			{SiteName}
+			<img src={ IconURL } alt="">
+			<span set:html={ SiteName }></span>
     	</a>
 
 		<span class="space-between"></span>
@@ -26,10 +26,9 @@
     </div>
 
 	<span class="buttons right">
-		<a href="javascript:void(0);">
+		<a href="javascript:ThemeSwitcher.Switch();">
 			<ThemeSwitcher />
 		</a>
-		
 		<a href="/?login=admin">
 			<Login color="#f8f8ff"/>
 		</a>
@@ -44,22 +43,61 @@ function OpenSideBar () {
 
 <style>
     header {
+		/* position */
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-		max-height: 70px;
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
-        background-color: rgba(25, 104, 106, .6);
-        padding: 10px 0;
-        color: #f8f8ff;
+		right: 0;
         z-index: 128;
+		margin: 0 auto;
+		margin-top: 15px;
 
+		/* flex */
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		/* size */
+        width: 95%;
+		max-height: 70px;
+        padding: 10px 0;
+
+		/* apperence */
+		transition: all .3s ease;
+
+		border-radius: 10px;
+
+		background-color: rgba(35, 35, 35, .65);
+        color: #f8f8ff;
+
+		border-color: rgba(0, 0, 0, 0.15);
+		border-style: solid;
+		border-width: 1px;
+
+        -webkit-backdrop-filter: blur(25px);
+        backdrop-filter: blur(25px);
+
+		box-shadow:
+			 1px 0px 10px rgba(0,0,0,.2),
+			-1px 0px 10px rgba(0,0,0,.2),
+			 0px 1px 10px rgba(0,0,0,.2);
     }
+	header.TopStick {
+		border-color: rgba(0,0,0,0);
+		border-radius: 0;
+		width: 100%;
+		margin-top: 0;;
+	}
+
+	body[theme="Light"] header {
+		background-color: rgba(255, 255, 255, .65);
+		color: #1f1f1f !important;
+		/* box-shadow:
+			01px 0px 10px rgba(255,255,255,.2),
+			-1px 0px 10px rgba(255,255,255,.2),
+			00px 1px 10px rgba(255,255,255,.2); */
+	}
+
 	a.title {
 		display: flex !important;
 		align-items: center;
@@ -70,7 +108,7 @@ function OpenSideBar () {
 	header .title img {
 		height: 50px;
 		border-radius: 50%;
-		margin-right: 5px;
+		margin-right: 10px;
 	}
 	span.left {
 		margin-left: 6px;
@@ -129,8 +167,7 @@ function OpenSideBar () {
 			display: none;
 		}
 		a.title {
-			display: inline-block!important;
-			/* justify-content: center; */
+			display: inline-block !important;
 		}
 		a.title img {
 			display: none;
@@ -139,12 +176,7 @@ function OpenSideBar () {
 			content: "" !important;
 		}
 	}
-
-/*	@media (max-width: 800px) {
-		div.MultiDisk {
-			display: none;
-		}
-	}
-	*/
-
 </style>
+
+<script src="../assets/ThemeSwitcher.js"></script>
+
