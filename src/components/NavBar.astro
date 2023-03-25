@@ -1,17 +1,23 @@
 ---
 	import Login from "./fa-icons/login.astro"
     import Menu from "./fa-icons/bars.astro"
+	import ThemeSwitcher from "./base/ThemeSwitcher.astro"
 	const { SiteName } = Astro.props;
 ---
 
 <header>
-	<span class="button menu" onclick="OpenSideBar()"><Menu color="#f8f8ff"/></span>
+	<span class="buttons left">
+		<a href="javascript:void(0);" onclick="OpenSideBar()">
+			<Menu color="#f8f8ff"/>
+		</a>
+	</span>
 
     <div class="Header">
 
-		<span class="title">
-        	<a href="/" set:html={SiteName}></a>
-    	</span>
+		<a class="title" href="/">
+			<img src="/aom-assets/images/fufu512.png" alt="">
+			{SiteName}
+    	</a>
 
 		<span class="space-between"></span>
 
@@ -19,7 +25,15 @@
 
     </div>
 
-	<span class="button login" onclick="location.assign('/?login=admin')"><Login color="#f8f8ff"/></span>
+	<span class="buttons right">
+		<a href="javascript:void(0);">
+			<ThemeSwitcher />
+		</a>
+		
+		<a href="/?login=admin">
+			<Login color="#f8f8ff"/>
+		</a>
+	</span>
 </header>
 
 <script is:inline>
@@ -34,6 +48,7 @@ function OpenSideBar () {
         top: 0;
         left: 0;
         width: 100%;
+		max-height: 70px;
         -webkit-backdrop-filter: blur(15px);
         backdrop-filter: blur(15px);
         background-color: rgba(25, 104, 106, .6);
@@ -45,13 +60,32 @@ function OpenSideBar () {
 		justify-content: space-between;
 		align-items: center;
     }
-	span.menu {
+	a.title {
+		display: flex !important;
+		align-items: center;
+	}
+	a.title::after {
+		content: none !important;
+	}
+	header .title img {
+		height: 50px;
+		border-radius: 50%;
+		margin-right: 5px;
+	}
+	span.left {
 		margin-left: 6px;
 	}
-	span.login {
+	span.right {
 		margin-right: 6px;
 	}
-	header > span.button {
+	span.left, 
+	span.right {
+		display: flex;
+		max-width: 105px;
+		min-width: 105px;
+		width: 105px;
+	}
+	header > span.buttons a {
 		transition: all .3s ease;
 		cursor: pointer;
 		display: inline-block;
@@ -62,28 +96,47 @@ function OpenSideBar () {
 		line-height: 50px;
 		text-align: center;
 	}
-	header > span.button:hover {
+	header > span.buttons a::after {
+		content: none;
+		display: none;
+	}
+	header > span.buttons a:hover {
 		background-color: rgba(128,128,128,.5);
 	}
-	header > span.button:active {
+	header > span.buttons a:active {
 		transform: scale(.95);
+	}
+	header > span.buttons a:not(:last-child) {
+		margin-right: 5px;
 	}
 
 
     div.Header {
         display: flex;
         justify-content: space-between;
+		align-items: center;
 		width: 80%;
 		margin: 0 10%;
-		max-width: 1250px
+		max-width: 1250px;
+		max-height: 50px;
 	}
-	@media (max-width: 600px) {
+	@media (max-width: 800px) {
 		div.Header {
 			display: block;
 			text-align: center;
 		}
 		div.Header > div.CurrentDriveName {
 			display: none;
+		}
+		a.title {
+			display: inline-block!important;
+			/* justify-content: center; */
+		}
+		a.title img {
+			display: none;
+		}
+		a.title::after {
+			content: "" !important;
 		}
 	}
 
