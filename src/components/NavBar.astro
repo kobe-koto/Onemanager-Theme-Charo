@@ -7,7 +7,7 @@
 
 <header>
 	<span class="buttons left">
-		<a href="javascript:void(0);" onclick="OpenSideBar()">
+		<a href="javascript:void(0);" onclick="SideBar.Open()">
 			<Menu color="#f8f8ff"/>
 		</a>
 	</span>
@@ -35,12 +35,6 @@
 	</span>
 </header>
 
-<script is:inline>
-function OpenSideBar () {
-    console.log("A not functional function just be triggered.")
-}
-</script>
-
 <style>
     header {
 		/* position */
@@ -50,7 +44,7 @@ function OpenSideBar () {
 		right: 0;
         z-index: 128;
 		margin: 0 auto;
-		margin-top: 15px;
+		margin-top: 2vw;
 
 		/* flex */
 		display: flex;
@@ -58,7 +52,7 @@ function OpenSideBar () {
 		align-items: center;
 
 		/* size */
-        width: 95%;
+        width: 95vw;
 		max-height: 70px;
         padding: 10px 0;
 
@@ -81,12 +75,14 @@ function OpenSideBar () {
 			 1px 0px 10px rgba(0,0,0,.2),
 			-1px 0px 10px rgba(0,0,0,.2),
 			 0px 1px 10px rgba(0,0,0,.2);
+
+		overflow: auto;
     }
 	header.TopStick {
 		border-color: rgba(0,0,0,0);
 		border-radius: 0;
 		width: 100%;
-		margin-top: 0;;
+		margin-top: 0;
 	}
 
 	body[theme="Light"] header {
@@ -154,7 +150,7 @@ function OpenSideBar () {
         justify-content: space-between;
 		align-items: center;
 		width: 80%;
-		margin: 0 10%;
+		margin: 0 10px;
 		max-width: 1250px;
 		max-height: 50px;
 	}
@@ -176,7 +172,24 @@ function OpenSideBar () {
 			content: "" !important;
 		}
 	}
+	@media (max-width: 360px) {
+		header {
+			display: block;
+			text-align: center;
+			border-color: rgba(0,0,0,0);
+			border-radius: 0;
+			width: 100%;
+			margin-top: 0;
+		}
+		div.Header {
+			margin: 0 auto;
+		}
+		header span.buttons {
+			display: none;
+		}
+	}
 </style>
 
 <script src="../assets/ThemeSwitcher.js"></script>
+<script src="../assets/SideBar.js"></script>
 

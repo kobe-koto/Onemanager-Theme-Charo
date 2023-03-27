@@ -4,25 +4,31 @@
     <div class="IntroductionItem">
         <div class="IntroductionItemLeft">
             <h1>
-                The ArmoLab's Onemanager Theme <br /> ( AOM )
+                The ArmoLab's Onemanager Theme <br />
+                <a style="font-size: larger;">Charo</a>
             </h1>
-            <p>A Onemanager Theme written in Astro.</p>
+            <p>A Theme for Onemanager, written in Astro.</p>
         </div>
         <div class="IntroductionItemRight">
             <img src="/aom-assets/images/fufu512.png" alt="" />
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <h2>In hurry? Let's have a <a class="Highlighted">Quick Start</a>.</h2>
+    <h3>- Platform Setting =&gt; customTheme value: (still some bugs here)</h3>
+    <code>https://aom.koto.gq/allinone.html</code>
+    <h3>- Setting =&gt; Upgrade: (you better build it yourself)</h3>
+    <code>Username: ArmoLab; Repo: Armo-Onemanager</code>
 </div>
 
 <style>
 
     .IntroductionContainer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin: auto;
         
-        height: 100vh;
+        min-height: 80vh;
         width: 80%;
         max-width: 1250px;
 
@@ -45,6 +51,24 @@
     }
     .IntroductionItemLeft, .IntroductionItemRight {
         width: 50%;
+    }
+
+
+    @media (max-width: 1280px) {
+        .IntroductionItemRight {
+            display: none;
+        }
+        .IntroductionItemLeft {
+            width: auto;
+            text-align: center;
+        }
+        .IntroductionContainer {
+            display: block;
+            height: auto;
+        }
+        .IntroductionItem {
+            display: block;
+        }
     }
 
 </style>
