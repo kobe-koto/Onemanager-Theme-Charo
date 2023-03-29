@@ -2,8 +2,21 @@
 	const { SiteName } = Astro.props;
 ---
 
-<div class="Contents">
+<div>
     <p style="font-size: larger;" set:html={SiteName}></p>
     <p>Powered by <a href="https://astro.build/">Astro.js</a>, Theme for <a href="https://github.com/qkqpttgf/OneManager-php">Onemanager</a></p>
-    <p>Theme Charo by ArmoLab Org, And you.</p>
+    <p><a href="https://github.com/ArmoLab/Onemanager-Theme-Charo">Theme Charo</a> by <a href="https://github.com/ArmoLabArmoLab Org</a>, And you.</p>
 </div>
+
+<style>
+div {
+    width: 100%;
+    padding: 50px 0;
+    background-color: rgba(40, 41, 42, .75);
+    backdrop-filter: blur(25px);
+    text-align: center;
+}
+body[theme="Light"] div {
+    background-color: rgba(200, 210, 220, 0.75);
+}
+</style>
