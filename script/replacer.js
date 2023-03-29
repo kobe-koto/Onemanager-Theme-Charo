@@ -7,14 +7,14 @@ fs.readdir("./dist/", (err, files) => {
         return;
     }
 
-    let TargrtFile = [];
+    let TargetFile = [];
     for (let i=0, i1 =0; i<files.length; i++) {
         if (files[i].match(/.html$/gi)) {
-            TargrtFile[i1] = files[i];
+            TargetFile[i1] = files[i];
             i1++;
         }
     }
-    DoReplace(TargrtFile, files);
+    DoReplace(TargetFile, files);
 });
 
 function DoReplace(FileArray, PathArray) {

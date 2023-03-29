@@ -2,10 +2,14 @@
   "name": "Onemanager-Theme-Charo",
   "description": "The ArmoLab's Onemanager Theme: Charo. \r\nA Theme for Onemanager, written in Astro.",
   "author": "kobe-koto",
-  "keywords": ["Astro", "Onemanager", "Theme"],
+  "keywords": [
+    "Astro",
+    "Onemanager",
+    "Theme"
+  ],
   "homepage": "https://aom.koto.gq/",
-  "url" : "https://github.com/ArmoLab/Onemanager-Theme-Charo/issues",
-  "license" : "AGPL-3",
+  "url": "https://github.com/ArmoLab/Onemanager-Theme-Charo/issues",
+  "license": "AGPL-3",
   "type": "module",
   "version": "0.1.0",
   "scripts": {
@@ -13,7 +17,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "build:deploy": "astro build && node ./script/replacer.js"
+    "build:deploy": "astro build && node ./script/replacer.js",
+    "PlatformSwitch": "node ./script/PlatformSwitcher.js"
   },
   "dependencies": {
     "@babel/core": "^7.21.0",
