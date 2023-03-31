@@ -21,9 +21,13 @@
     "PlatformSwitch": "node ./script/PlatformSwitcher.js"
   },
   "dependencies": {
-    "@babel/core": "^7.21.0",
+    "@vitejs/plugin-legacy": "^4.0.2",
     "astro": "^2.1.2",
     "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.21"
+    "postcss": "^8.4.21",
+    "vite": "^4.2.1"
+  },
+  "devDependencies": {
+    "terser": "^5.16.8"
   }
 }

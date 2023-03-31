@@ -1,46 +1,72 @@
-import fs from 'fs';
-const Domain = "https://aom.koto.gq"
+import fs from "fs";
+const Domain = "https://aom.koto.gq",
+    JavaScriptsPath = "/aom-assets/_astro/";
 
-fs.readdir("./dist/", (err, files) => {
-    if (err) {
-        console.error(err);
-        return;
+const RootAssetsArray = fs.readdirSync("./dist/");
+let TargetHTMLs = MatchList(RootAssetsArray, /.html$/i);
+
+let JavaScriptsArray =
+    MatchList(
+        MatchList(
+            fs.readdirSync(`./dist/${JavaScriptsPath}`),
+            /.js$/i
+        ),
+        /-legacy./
+    )
+
+for (let i=0; i<TargetHTMLs.length; i++) {
+    // read the HTML
+    let HTMLData = fs.readFileSync(`./dist/${TargetHTMLs[i]}`, {encoding:"utf8"});
+
+
+    // replace assets URL
+    for (let i=0; i<RootAssetsArray.length; i++) {
+        // remove the `https://aom.koto.gq/` from the source to avoid do stress replace.
+        HTMLData = HTMLData.replace(new RegExp(`${Domain}/${RootAssetsArray[i]}`, "gi"), `/${RootAssetsArray[i]}`)
+
+        let exp = new RegExp(`/${RootAssetsArray[i]}`, "gi")
+        HTMLData = HTMLData.replace(exp, `${Domain}/${RootAssetsArray[i]}`)
     }
 
-    let TargetFile = [];
-    for (let i=0, i1 =0; i<files.length; i++) {
-        if (files[i].match(/.html$/gi)) {
-            TargetFile[i1] = files[i];
-            i1++;
-        }
+    // patch js asset url to polyfilled url JavaScriptsArray
+    let ScriptElement = `<script nomodule src="$JavaScriptPath"></script>`,
+        Scripts = "" +
+            ScriptElement.replace(
+                /\$JavaScriptPath/gi,
+                Domain + "/aom-assets/" + MatchList(
+                    MatchList(
+                        fs.readdirSync("./dist/aom-assets/"),
+                        /.min.js$/i
+                    ),
+                    /^s./i
+                )[0]
+            );
+    for (let i=0; i<JavaScriptsArray.length; i++) {
+        let JavaScriptPath = Domain + JavaScriptsPath + JavaScriptsArray[i]
+        Scripts += ScriptElement.replace(/\$JavaScriptPath/gi, JavaScriptPath)
     }
-    DoReplace(TargetFile, files);
-});
+    
+    // apply JavaScripts Patch.
+    HTMLData = HTMLData.replace(/<\/head>/i, Scripts + "</head>")
 
-function DoReplace(FileArray, PathArray) {
-    for (let i=0; i<FileArray.length; i++) {
-        fs.readFile(`./dist/${FileArray[i]}`, 'utf8', (err, data) => {
-            if (err) {
-                console.error(err);
-                return;
-            }
 
-            let ReplacedText = data;
-            for (let i=0; i<PathArray.length; i++) {
-                let exp = new RegExp(`/${PathArray[i]}`, "gi")
-                ReplacedText = ReplacedText.replace(exp, `${Domain}/${PathArray[i]}`)
-            }
-
-            fs.writeFile(`./dist/${FileArray[i]}`, ReplacedText, err => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-                console.log(`Replace ${FileArray[i]} done.`)
-            })
-        })
+    // write changes.
+    try {
+        fs.writeFileSync(`./dist/${TargetHTMLs[i]}`, HTMLData);
+        console.log(`Replace ${TargetHTMLs[i]} done.`)
+    } catch (err) {
+        console.eror(err)
     }
 }
 
-
+function MatchList (ListArray, reg) {
+    let Targets = [];
+    for (let i=0, i1 =0; i<ListArray.length; i++) {
+        if (ListArray[i].match(reg)) {
+            Targets[i1] = ListArray[i];
+            i1++;
+        }
+    }
+    return Targets;
+}
 

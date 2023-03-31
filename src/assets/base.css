@@ -1,6 +1,10 @@
+@import url("./fonts/Outfit/main.css");
+@import url("./fonts/JetBrainsMono/main.css");
+
+
 html,
 body {
-    font-family: system-ui;
+    font-family: "Outfit", sans-serif, system-ui;
     margin: 0;
 }
 
@@ -92,7 +96,8 @@ code, .code {
     text-align: left; 
     border-radius: 5px; 
     word-break: break-all;
-    font-family: 'JetBrains Mono', Monospace, sans-serif;
+    font-family: 'JetBrains Mono', sans-serif;
+    font-size: smaller;
 
     resize: none;
     border: none;
