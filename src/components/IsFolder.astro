@@ -4,48 +4,58 @@ import MorePage from "../components/MorePage.astro"
 ---
 
     <div class="FolderDesc" id="<!--FolderId-->">
-        <div><!--constStr@File--></div>
-        <div style="width: 20%;text-align: right;"><!--constStr@EditTime--></div>
-        <div style="width: 20%;text-align: right;"><!--constStr@Size--></div>
+        <div>
+            <!--constStr@File-->
+        </div>
+        <div style="width: 20%;text-align: right;">
+            <!--constStr@EditTime-->
+        </div>
+        <div style="width: 20%;text-align: right;">
+            <!--constStr@Size-->
+        </div>
     </div>
 
 
 
     <!--FolderListStart-->
-    <LinkContainer href="<!--FileEncodeReplaceUrl-->/">
-        <div class="ListItems">
-            <div data-FileId="<!--FileId-->">
-                <!--FileEncodeReplaceName-->
+    <div id="Folders">
+        <LinkContainer href="<!--FileEncodeReplaceUrl-->/">
+            <div class="ListItems">
+                <div data-FileId="<!--FileId-->">
+                    <!--FileEncodeReplaceName-->
+                </div>
+                <div>
+                    <!--lastModifiedDateTime-->
+                </div>
+                <div>
+                    <!--size-->
+                </div>
             </div>
-            <div>
-                <!--lastModifiedDateTime-->
-            </div>
-            <div>
-                <!--size-->
-            </div>
-        </div>
-    </LinkContainer>
+        </LinkContainer>
+    </div>
     <!--FolderListEnd-->
 
 
 
     <!--FileListStart-->
-    <LinkContainer href="<!--FileEncodeReplaceUrl-->?preview">
-        <div class="ListItems">
-            <div data-FileId="<!--FileId-->">
-                <!--FileEncodeReplaceName-->
+    <div id="Files">
+        <LinkContainer href="<!--FileEncodeReplaceUrl-->?preview">
+            <div class="ListItems">
+                <div data-FileId="<!--FileId-->">
+                    <!--FileEncodeReplaceName-->
+                </div>
+    
+                <div>
+                    <!--lastModifiedDateTime-->
+                </div>
+    
+                <div>
+                    <!--size-->
+                </div>
+    
             </div>
-
-            <div>
-                <!--lastModifiedDateTime-->
-            </div>
-
-            <div>
-                <!--size-->
-            </div>
-
-        </div>
-    </LinkContainer>
+        </LinkContainer>
+    </div>
     <!--FileListEnd-->
 
     <MorePage />
@@ -57,27 +67,28 @@ import MorePage from "../components/MorePage.astro"
     .FolderDesc {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     .FolderDesc {
-        margin: 0 5%;
-        padding: 0 10px
+        margin: 0 16px;
     }
 
-    .ListItems:nth-child(1),
-    .FolderDesc:nth-child(1) {
+    .ListItems div:nth-child(1),
+    .FolderDesc div:nth-child(1) {
+        text-align: left;
         width: 50%;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
     }
-    .ListItems:nth-child(2),
-    .FolderDesc:nth-child(2) {
+    .ListItems div:nth-child(2),
+    .FolderDesc div:nth-child(2) {
         width: 30%;
         text-align: right;
     }
-    .ListItems:nth-child(3), 
-    .FolderDesc:nth-child(3), {
+    .ListItems div:nth-child(3), 
+    .FolderDesc div:nth-child(3), {
         width: 20%;
         text-align: right;
     }

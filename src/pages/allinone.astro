@@ -11,6 +11,7 @@ import PathBar from "../components/PathBar.astro"
 import IsFolder from "../components/IsFolder.astro"
 import IsFile from "../components/IsFile.astro"
 
+import Copyright from "components/Copyright.astro"
 ---
 
 <html lang="<!--constStr@language-->">
@@ -43,6 +44,7 @@ import IsFile from "../components/IsFile.astro"
                     </div>
 		        </div>
             <!--HeadomfEnd-->
+
             <!--HeadmdStart-->
 		        <div class="Contents">
                     <div class="markdown-body" id="head">
@@ -58,8 +60,6 @@ import IsFile from "../components/IsFile.astro"
                 </div>
             <!--HeadmdEnd-->
 
-
-
             <div class="Contents">
                 <div>
 
@@ -70,7 +70,7 @@ import IsFile from "../components/IsFile.astro"
     
 
                     <!--IsFolderStart-->
-                    <IsFolder />
+                        <IsFolder />
                     <!--IsFolderEnd-->
 
 
@@ -107,8 +107,8 @@ import IsFile from "../components/IsFile.astro"
                     </div>
 		        </div>
             <!--FootomfEnd-->
-
 		</main>
+        <Copyright />
 	</body>
 	<!--customScript-->
 </html>

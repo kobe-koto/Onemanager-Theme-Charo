@@ -1,6 +1,9 @@
 ---
 import ButtonContainer from "./base/ButtonContainer.astro";
 
+// icons
+import Copy from "./fa-icons/copy.astro";
+import Download from "./fa-icons/download.astro";
 ---
 <div style="text-align: center; width=90%;margin: 0 auto; padding: 15px 5px;">
 
@@ -12,15 +15,15 @@ import ButtonContainer from "./base/ButtonContainer.astro";
         <!--FileEncodeUrl-->
     </code>
     <ButtonContainer href="<!--FileEncodeUrl-->">
-        <span>Download<!--constStr@Download--></span>
+        <span><Download color="#f8f8ff" />&nbsp;Download<!--constStr@Download--></span>
+    </ButtonContainer>
+    <ButtonContainer href="<!--FileEncodeUrl-->">
+        <span><Copy color="#f8f8ff" />&nbsp;Copy URL</span>
     </ButtonContainer>
     <script is:inline>
-        var $url = document.getElementById('url');
+        var $url = document.getElementById("url");
         if ($url) {
-            let url = location.href;
-            url = url.slice(0, url.length-8);
-            $url.innerHTML = url.replace(/&amp;/g, '&amp;amp;');
-            $url.style.height = $url.scrollHeight + 'px';
+            $url.innerHTML = location.href.replace(/\?preview$/gi, "").replace(/&amp;/g, "&amp;amp;");
         }
     </script>
 
