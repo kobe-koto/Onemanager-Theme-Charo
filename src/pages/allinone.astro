@@ -1,13 +1,10 @@
 ---
 import "../assets/base.css"
 
-
 // base Components
 import Divider from "../components/base/Divider.astro"
 
 // container
-import ContentContainer from "../components/base/ContentContainer.astro"
-
 import Nav from "../components/NavBar.astro"
 import PathBar from "../components/PathBar.astro"
 
@@ -15,28 +12,6 @@ import IsFolder from "../components/IsFolder.astro"
 import IsFile from "../components/IsFile.astro"
 
 ---
-
-<!--IconValuesStart-->
-
-<!--
-
-{
-    "music":"musical-notes",
-    "video":"logo-youtube",
-    "img":"image",
-    "office":"newspaper",
-    "txt":"clipboard",
-    "zip":"file-tray-full",
-    "iso":"disc",
-    "apk":"logo-android",
-    "exe":"logo-windows",
-    "default":"document"
-}
-
--->
-
-<!--IconValuesEnd-->
-
 
 <html lang="<!--constStr@language-->">
 	<head>
@@ -62,14 +37,14 @@ import IsFile from "../components/IsFile.astro"
 		<main>
 
 		    <!--HeadomfStart-->
-		        <ContentContainer>
+		        <div class="Contents">
                     <div class="customfile" id="head-om">
                         <!--HeadomfContent-->
                     </div>
-		        </ContentContainer>
+		        </div>
             <!--HeadomfEnd-->
             <!--HeadmdStart-->
-                <ContentContainer>
+		        <div class="Contents">
                     <div class="markdown-body" id="head">
                         <textarea id="head-md" style="display:none;"><!--HeadmdContent--></textarea>
                     </div>
@@ -80,12 +55,12 @@ import IsFile from "../components/IsFile.astro"
                             $head.innerHTML = marked(document.getElementById('head-md').innerText);
                         }
                     </script>
-                </ContentContainer>
+                </div>
             <!--HeadmdEnd-->
 
 
 
-		    <ContentContainer>
+            <div class="Contents">
                 <div>
 
                     <PathBar />
@@ -107,12 +82,12 @@ import IsFile from "../components/IsFile.astro"
 
                 </div>
 
-		    </ContentContainer>
+            </div>
             
 
 
             <!--ReadmemdStart-->
-		        <ContentContainer>
+		        <div class="Contents">
                     <div class="markdown-body" id="readme">
                         <textarea id="readme-md" style="display:none;"><!--ReadmemdContent--></textarea>
                     </div>
@@ -123,17 +98,44 @@ import IsFile from "../components/IsFile.astro"
                             $readme.innerHTML = marked(document.getElementById('readme-md').innerText);
                         }
                     </script>
-		        </ContentContainer>
+                </div>
             <!--ReadmemdEnd-->
             <!--FootomfStart-->
-		        <ContentContainer>
+		        <div class="Contents">
                     <div class="customfile" id="foot-om">
                         <!--FootomfContent-->
                     </div>
-		        </ContentContainer>
+		        </div>
             <!--FootomfEnd-->
 
 		</main>
 	</body>
 	<!--customScript-->
 </html>
+
+
+
+
+
+
+
+<!--IconValuesStart-->
+
+<!--
+
+{
+    "music":"musical-notes",
+    "video":"logo-youtube",
+    "img":"image",
+    "office":"newspaper",
+    "txt":"clipboard",
+    "zip":"file-tray-full",
+    "iso":"disc",
+    "apk":"logo-android",
+    "exe":"logo-windows",
+    "default":"document"
+}
+
+-->
+
+<!--IconValuesEnd-->

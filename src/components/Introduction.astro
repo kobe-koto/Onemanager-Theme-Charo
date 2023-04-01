@@ -27,8 +27,6 @@
 
     .IntroductionContainer {
         margin: auto;
-        
-        min-height: 80vh;
         width: 80%;
         max-width: 1250px;
 
@@ -39,6 +37,7 @@
 
         flex: 1 1;
         display: flex;
+        margin: 64px auto;
     }
     .IntroductionItemLeft h1 {
         background-image: linear-gradient(-45deg, #FF8F00, #e8e970);
@@ -49,12 +48,18 @@
     body[theme="Light"] .IntroductionItemLeft h1 {
         background-image: linear-gradient(-45deg, #588ebe, #9b46c5);
     }
-    .IntroductionItemLeft, .IntroductionItemRight {
-        width: 50%;
+    .IntroductionItemRight img {
+        border-radius: 50%;
+        width: 100%;
+    }
+    .IntroductionItemLeft {
+        width: 70%;
+    }
+    .IntroductionItemRight {
+        width: 30%;
     }
 
-
-    @media (max-width: 1280px) {
+    @media (max-width: 1024px) {
         .IntroductionItemRight {
             display: none;
         }
