@@ -58,6 +58,10 @@ a:link:hover::after, a:visited:hover::after {
     width: 100%;
     margin: 0 auto 0 0;
 }
+a.NoUnderline::after {
+    content: none !important;
+    display: none !important;
+}
 
 body[theme="Light"] a:link, body[theme="Light"] a:visited {
     color: #1f1f1f;
@@ -70,21 +74,18 @@ body[theme="Light"] a:link::after, body[theme="Light"] a:visited::after {
     display: inline-block;
     transition: all .4s ease;
 }
-.Highlighted:hover {
-    letter-spacing: 5px;
-}
 .Highlighted::after {
     content: "";
     display: block;
     width: 100%;
-    height: 15px;
-    margin-top: -15px;
+    height: 12px;
+    margin-top: -12px;
     background-color: #588ebe;
     opacity: .75;
     position: relative;
     z-index: -1;
 }
-code, .code, .markdown-body .code {
+code, .code, .markdown-body pre {
     display: block; 
     box-sizing: border-box; 
     background-color: #28292a; 

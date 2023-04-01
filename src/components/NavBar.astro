@@ -1,8 +1,13 @@
 ---
+	import ThemeSwitcher from "./base/ThemeSwitcher.astro"
+	import MultiDisk from "./MultiDisk.astro"
+	import "../assets/header.css"
+	const { SiteName, IconURL } = Astro.props;
+	
+	// icons
 	import Login from "./fa-icons/login.astro"
     import Menu from "./fa-icons/bars.astro"
-	import ThemeSwitcher from "./base/ThemeSwitcher.astro"
-	const { SiteName, IconURL } = Astro.props;
+	import ListItem from "./fa-icons/list-item.astro";
 ---
 
 <header>
@@ -10,6 +15,11 @@
 		<a href="javascript:void(0);" onclick="SideBar.Open()">
 			<Menu color="#f8f8ff"/>
 		</a>
+		<!--MultiDiskAreaStart-->
+			<a href="javascript:void(0);" onclick="MultiDisk.Expand()" class="MultiDiskExpander">
+				<ListItem color="#f8f8ff"/>
+			</a>
+		<!--MultiDiskAreaEnd-->
 	</span>
 
     <div class="Header">
@@ -19,9 +29,14 @@
 			<span set:html={ SiteName }></span>
     	</a>
 
-		<span class="space-between"></span>
-
-		<div class="CurrentDriveName">(CurrentDriveName 仍在開發中)</div>
+		<span data-desc="space-between"></span>
+		
+		<a class="CurrentDriveName NoUnderline" href="javascript:MultiDisk.Expand();">
+			<!--MultiDiskAreaStart-->
+				<span id="DriveName">(CurrentDriveName)</span>
+				<span class="ExpandIcon"><ListItem color="#f8f8ff" /></span>
+			<!--MultiDiskAreaEnd-->
+		</a>
 
     </div>
 
@@ -34,161 +49,9 @@
 		</a>
 	</span>
 </header>
-
-<style>
-    header {
-		/* position */
-        position: fixed;
-        top: 0;
-        left: 0;
-		right: 0;
-        z-index: 128;
-		margin: 0 auto;
-		margin-top: 2vw;
-
-		/* flex */
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		/* size */
-        width: 95vw;
-		max-height: 70px;
-        padding: 10px 0;
-
-		/* apperence */
-		transition: all .3s ease;
-
-		border-radius: 10px;
-
-		background-color: rgba(35, 35, 35, .65);
-        color: #f8f8ff;
-
-		border-color: rgba(0, 0, 0, 0.15);
-		border-style: solid;
-		border-width: 1px;
-
-        -webkit-backdrop-filter: blur(25px);
-        backdrop-filter: blur(25px);
-
-		box-shadow:
-			 1px 0px 10px rgba(0,0,0,.2),
-			-1px 0px 10px rgba(0,0,0,.2),
-			 0px 1px 10px rgba(0,0,0,.2);
-
-		overflow: auto;
-    }
-	header.TopStick {
-		border-color: rgba(0,0,0,0);
-		border-radius: 0;
-		width: 100%;
-		margin-top: 0;
-	}
-
-	body[theme="Light"] header {
-		background-color: rgba(255, 255, 255, .65);
-		color: #1f1f1f !important;
-		/* box-shadow:
-			01px 0px 10px rgba(255,255,255,.2),
-			-1px 0px 10px rgba(255,255,255,.2),
-			00px 1px 10px rgba(255,255,255,.2); */
-	}
-
-	a.title {
-		display: flex !important;
-		align-items: center;
-	}
-	a.title::after {
-		content: none !important;
-	}
-	header .title img {
-		height: 50px;
-		border-radius: 50%;
-		margin-right: 10px;
-	}
-	span.left {
-		margin-left: 6px;
-	}
-	span.right {
-		margin-right: 6px;
-	}
-	span.left, 
-	span.right {
-		display: flex;
-		max-width: 105px;
-		min-width: 105px;
-		width: 105px;
-	}
-	header > span.buttons a {
-		transition: all .3s ease;
-		cursor: pointer;
-		display: inline-block;
-		border-radius: 50%;
-		height: 50px;
-		min-width: 50px;
-		max-width: 50px;
-		line-height: 50px;
-		text-align: center;
-	}
-	header > span.buttons a::after {
-		content: none;
-		display: none;
-	}
-	header > span.buttons a:hover {
-		background-color: rgba(128,128,128,.5);
-	}
-	header > span.buttons a:active {
-		transform: scale(.95);
-	}
-	header > span.buttons a:not(:last-child) {
-		margin-right: 5px;
-	}
-
-
-    div.Header {
-        display: flex;
-        justify-content: space-between;
-		align-items: center;
-		width: 80%;
-		margin: 0 10px;
-		max-width: 1250px;
-		max-height: 50px;
-	}
-	@media (max-width: 800px) {
-		div.Header {
-			display: block;
-			text-align: center;
-		}
-		div.Header > div.CurrentDriveName {
-			display: none;
-		}
-		a.title {
-			display: inline-block !important;
-		}
-		a.title img {
-			display: none;
-		}
-		a.title::after {
-			content: "" !important;
-		}
-	}
-	@media (max-width: 330px) {
-		header {
-			display: block;
-			text-align: center;
-			border-color: rgba(0,0,0,0);
-			border-radius: 0;
-			width: 100%;
-			margin-top: 0;
-		}
-		div.Header {
-			margin: 0 auto;
-		}
-		header span.buttons {
-			display: none;
-		}
-	}
-</style>
+<!--MultiDiskAreaStart-->
+<MultiDisk />
+<!--MultiDiskAreaEnd-->
 
 <script src="../assets/ThemeSwitcher.js"></script>
 <script src="../assets/SideBar.js"></script>

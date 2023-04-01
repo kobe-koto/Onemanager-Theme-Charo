@@ -28,7 +28,7 @@ import Copyright from "components/Copyright.astro"
 
         <!--MdRequireStart-->
             <link rel="stylesheet" href="/aom-assets/depends/marked/github-markdown.css">
-            <script type="text/javascript" src="/aom-assets/depends/marked/marked.js"></script>
+            <script src="/aom-assets/depends/marked/marked.js" is:inline></script>
         <!--MdRequireEnd-->
 
         <!--customCss-->
@@ -62,26 +62,22 @@ import Copyright from "components/Copyright.astro"
 
             <div class="Contents">
                 <div>
-
+                    
                     <PathBar />
 
                     <Divider />
+
                     <h3><!--constStr@File--></h3>
-    
 
                     <!--IsFolderStart-->
                         <IsFolder />
                     <!--IsFolderEnd-->
 
-
                     <!--IsFileStart-->
                         <IsFile />
                     <!--IsFileEnd-->
 
-
-
                 </div>
-
             </div>
             
 

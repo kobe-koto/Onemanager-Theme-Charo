@@ -1,0 +1,102 @@
+---
+
+---
+
+<div class="MultiDiskContainer hidden">
+    <div class="MultiDisk">
+        <a href="javascript:void(0);" class="Disk">D1</a>
+        <a href="javascript:void(0);" class="Disk">D2</a>
+        <a href="javascript:void(0);" class="Disk now">D3</a>
+        <a href="javascript:void(0);" class="Disk">D4</a>
+        <!--MultiDisksStart-->
+            <a href="<!--MultiDisksUrl-->" class="Disk <!--MultiDisksNow-->">
+                <!--MultiDisksName-->
+            </a>
+        <!--MultiDisksEnd-->
+    </div>
+</div>
+
+
+<style>
+    div.MultiDiskContainer {
+        transition: all .45s ease;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 127;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(35, 35, 35, .65);
+        backdrop-filter: blur(15px);
+    }
+    div.MultiDiskContainer.hidden {
+        background-color: rgba(0,0,0,0);
+        backdrop-filter: blur(0px);
+        pointer-events: none;
+    }
+    div.MultiDisk {
+        transition: all .45s ease;
+        position: fixed;
+        top: 2vw;
+        left: 0;
+        right: 0;
+        z-index: 128;
+        margin: 0 auto;
+        margin-top: 88px;
+        width: fit-content;
+        /* width: 90%; */
+        /* height: 100px; */
+        backdrop-filter: blur(25px);
+        transform-style: flat;
+
+        font-size: larger;
+
+        text-align: center;
+        border-radius: 15px;
+        background-color: rgba(35, 35, 35, .65);
+        backdrop-filter: blur(25px);
+        padding: 20px 25px;
+        box-shadow: 
+            1px 0px 10px rgba(0,0,0,.2),
+            -1px 0px 10px rgba(0,0,0,.2), 
+            0px 1px 10px rgba(0,0,0,.2);
+    }
+    div.MultiDiskContainer.hidden div.MultiDisk {
+        transform: perspective(600px) rotateX(-25deg) translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        
+    }
+    a.Disk.now {
+        transition: all 0.45s ease;
+        
+        background-color: rgba(128, 128, 128, .65);
+        padding: 8px 12px;
+        border-radius: 16px;
+    }
+    a.Disk.now:hover {
+        transform: scale(1.1);
+    }
+    a.Disk.now::after {
+        content: none;
+        display: none;
+    }
+    a.Disk:not(:last-child) {
+        margin-right: 12px;
+    }
+
+
+    body[theme="Light"] {
+        background-color: rgba(200, 210, 220,.75);
+    }
+    body[theme="Light"] div.MultiDisk {
+        background-color: rgba(255, 255, 255, .65);
+    }
+    body[theme="Light"] a.Disk.now {
+        background-color: rgba(200, 210, 220, .75);
+    }
+</style>
+
+
+<script src="../assets/MultiDisk.js"></script>
