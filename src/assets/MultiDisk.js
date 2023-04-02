@@ -12,13 +12,18 @@ MultiDisk.Init = function () {
         document.getElementsByClassName("MultiDisk")[0]
                 .getElementsByClassName("Disk")
     MultiDisk.DiskNow = 
-        document.getElementsByClassName("MultiDisk")[0]
-                .querySelector(".Disk.now")
-                .innerHTML;
+        (
+            document.getElementsByClassName("MultiDisk")[0]
+                .querySelector(".Disk.now") || {}
+        ).innerHTML || "Single/NotAsTheme";
 
-    document.querySelector("a.CurrentDriveName.NoUnderline")
-            .querySelector("span#DriveName")
+    try {
+        document.querySelector("a.CurrentDriveName.NoUnderline")
+            .querySelector("span#DriveName1")
             .innerHTML = MultiDisk.DiskNow
+    } catch (e) {
+        console.info("DiskNow can't set, looks like it is Single. \r\n\r\nTraceback:\r\n"+e)
+    }
 
     for (let i=0; i<DiskElements.length; i++) {
         MultiDisk.DiskArray[i] = DiskElements[i].innerHTML;

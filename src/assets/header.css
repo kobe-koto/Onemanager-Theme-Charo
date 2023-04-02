@@ -157,7 +157,7 @@ a.MultiDiskExpander.TurnOn svg {
         display: inline-block;
     }
 }
-@media (max-width: 330px) {
+@media (max-width: 340px) {
     header {
         display: block;
         text-align: center;
