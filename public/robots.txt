@@ -1,0 +1,4 @@
+Disallow: *.js$
+Disallow: *.css$
+Disallow: /allinone.html
+Disallow: /aom-assets/*
