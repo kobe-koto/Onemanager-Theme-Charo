@@ -84,7 +84,8 @@ span.right {
     min-width: 105px;
     width: 105px;
 }
-header > span.buttons a {
+header > span.buttons > a,
+header > span.buttons > span {
     transition: all .3s ease;
     cursor: pointer;
     display: inline-block;
@@ -95,17 +96,21 @@ header > span.buttons a {
     line-height: 50px;
     text-align: center;
 }
-header > span.buttons a::after {
+header > span.buttons > a::after,
+header > span.buttons > span::after {
     content: none;
     display: none;
 }
-header > span.buttons a:hover {
+header > span.buttons > a:hover,
+header > span.buttons > span:hover {
     background-color: rgba(128,128,128,.5);
 }
-header > span.buttons a:active {
+header > span.buttons > a:active,
+header > span.buttons > span:active {
     transform: scale(.95);
 }
-header > span.buttons a:not(:last-child) {
+header > span.buttons > a:not(:last-child),
+header > span.buttons > span:not(:last-child) {
     margin-right: 5px;
 }
 
@@ -121,13 +126,13 @@ div.Header {
 }
 
 a.CurrentDriveName.NoUnderline span.ExpandIcon svg,
-a.MultiDiskExpander svg {
+span.MultiDiskExpander svg {
     transition: all 0.3s ease;
     transform-origin: center;
 }
 
 a.CurrentDriveName.NoUnderline.TurnOn span.ExpandIcon svg,
-a.MultiDiskExpander.TurnOn svg {
+span.MultiDiskExpander.TurnOn svg {
     transform: rotate(0.5turn);
 }
 

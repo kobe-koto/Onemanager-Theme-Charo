@@ -19,7 +19,7 @@ MultiDisk.Init = function () {
 
     try {
         document.querySelector("a.CurrentDriveName.NoUnderline")
-            .querySelector("span#DriveName1")
+            .querySelector("span#DriveName")
             .innerHTML = MultiDisk.DiskNow
     } catch (e) {
         console.info("DiskNow can't set, looks like it is Single. \r\n\r\nTraceback:\r\n"+e)
@@ -34,7 +34,7 @@ MultiDisk.Expand = function () {
     let MultiDiskElement = document.getElementsByClassName("MultiDiskContainer")[0];
     let Expanders = [];
     Expanders[0] = document.querySelector("a.CurrentDriveName.NoUnderline");
-    Expanders[1] = document.querySelector("a.MultiDiskExpander");
+    Expanders[1] = document.querySelector("span.MultiDiskExpander");
     if (MultiDiskElement.classList.contains("hidden")) {
         MultiDiskElement.classList.remove("hidden")
         try {

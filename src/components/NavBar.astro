@@ -12,13 +12,13 @@
 
 <header>
 	<span class="buttons left">
-		<a href="javascript:void(0);" onclick="SideBar.Open()">
+		<span onclick="SideBar.Open()" title="Open Sidebar.">
 			<Menu color="#f8f8ff"/>
-		</a>
+		</span>
 		<!--MultiDiskAreaStart-->
-			<a href="javascript:void(0);" onclick="MultiDisk.Expand()" class="MultiDiskExpander">
+			<span onclick="MultiDisk.Expand()" class="MultiDiskExpander" title="Open multi disk controller">
 				<ListItem color="#f8f8ff"/>
-			</a>
+			</span>
 		<!--MultiDiskAreaEnd-->
 	</span>
 
@@ -41,12 +41,12 @@
     </div>
 
 	<span class="buttons right">
-		<a href="javascript:ThemeSwitcher.Switch();">
+		<span onclick="ThemeSwitcher.Switch();" title="Switch theme, light or dark">
 			<ThemeSwitcher />
-		</a>
-		<a href="/?login=admin">
+		</span>
+		<span onclick="location.assign('/?login=admin')" title="Login">
 			<Login color="#f8f8ff"/>
-		</a>
+		</span>
 	</span>
 </header>
 <!--MultiDiskAreaStart-->
