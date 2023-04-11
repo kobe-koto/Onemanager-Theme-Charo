@@ -1,7 +1,6 @@
-# idea
-/.idea/shelf/
-/.idea/workspace.xml
-/.idea/httpRequests/
+# ide files
+/.idea/
+/.vscode/
 
 # pnpm moudles
 /node_modules/

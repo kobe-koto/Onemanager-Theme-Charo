@@ -1,6 +1,21 @@
 import fs from "fs";
-const Domain = "https://aom.koto.gq",
-    JavaScriptsPath = "/aom-assets/_astro/";
+
+let Args = {};
+for (let i=0, OrigArgs=process.argv.slice(2); i<OrigArgs.length; i++) {
+    let OrigArgObj = OrigArgs[i].split("=");
+    if (OrigArgObj[1] === "true") {
+        OrigArgObj[1] = true;
+    } else if (OrigArgObj[1] === "false") {
+        OrigArgObj[1] = false;
+    }
+    Args[OrigArgObj[0]] = OrigArgObj[1];
+}
+
+
+let { homepage: Domain } = JSON.parse(fs.readFileSync("./package.json"));
+Domain = Args.Domain ? Args.Domain : Domain;
+console.log(Domain)
+const JavaScriptsPath = "/aom-assets/_astro/";
 
 const RootAssetsArray = fs.readdirSync("./dist/");
 let TargetHTMLs = MatchList(RootAssetsArray, /.html$/i);
@@ -19,13 +34,15 @@ for (let i=0; i<TargetHTMLs.length; i++) {
     let HTMLData = fs.readFileSync(`./dist/${TargetHTMLs[i]}`, {encoding:"utf8"});
 
 
-    // replace assets URL
-    for (let i=0; i<RootAssetsArray.length; i++) {
-        // remove the `https://aom.koto.gq/` from the source to avoid do stress replace.
-        HTMLData = HTMLData.replace(new RegExp(`${Domain}/${RootAssetsArray[i]}`, "gi"), `/${RootAssetsArray[i]}`)
-
-        let exp = new RegExp(`/${RootAssetsArray[i]}`, "gi")
-        HTMLData = HTMLData.replace(exp, `${Domain}/${RootAssetsArray[i]}`)
+    if (Args.isDeploy === true) {
+        // replace assets URL
+        for (let i=0; i<RootAssetsArray.length; i++) {
+            // remove the `https://aom.koto.gq/` from the source to avoid do stress replace.
+            HTMLData = HTMLData.replace(new RegExp(`${Domain}/${RootAssetsArray[i]}`, "gi"), `/${RootAssetsArray[i]}`)
+        
+            let exp = new RegExp(`/${RootAssetsArray[i]}`, "gi")
+            HTMLData = HTMLData.replace(exp, `${Domain}/${RootAssetsArray[i]}`)
+        }
     }
 
     // patch js asset url to polyfilled url JavaScriptsArray
@@ -69,4 +86,6 @@ function MatchList (ListArray, reg) {
     }
     return Targets;
 }
+
+
 

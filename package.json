@@ -1,14 +1,14 @@
 {
   "name": "Onemanager-Theme-Charo",
-  "description": "The ArmoLab's Onemanager Theme: Charo. \r\nA Theme for Onemanager, written in Astro.",
+  "description": "A brand new OneManager theme: Charo. \r\nA Theme for Onemanager, written in Astro.",
   "author": "kobe-koto",
   "keywords": [
     "Astro",
     "Onemanager",
     "Theme"
   ],
-  "homepage": "https://aom.koto.gq/",
-  "url": "https://github.com/ArmoLab/Onemanager-Theme-Charo/issues",
+  "homepage": "https://charo.koto.cc",
+  "url": "https://github.com/kobe-koto/Onemanager-Theme-Charo/issues",
   "license": "AGPL-3",
   "type": "module",
   "version": "0.1.0",
@@ -21,11 +21,11 @@
     "PlatformSwitch": "node ./script/PlatformSwitcher.js"
   },
   "dependencies": {
-    "@vitejs/plugin-legacy": "^4.0.2",
     "astro": "^2.1.2",
-    "autoprefixer": "^10.4.14",
+    "vite": "^4.2.1",
     "postcss": "^8.4.21",
-    "vite": "^4.2.1"
+    "autoprefixer": "^10.4.14",
+    "@vitejs/plugin-legacy": "^4.0.2"
   },
   "devDependencies": {
     "terser": "^5.16.8"
