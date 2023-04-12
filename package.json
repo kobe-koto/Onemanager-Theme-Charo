@@ -15,9 +15,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro build && astro preview",
-    "build:deploy": "astro build && node ./script/replacer.js",
+    "build": "astro build && node ./script/replacer.js",
+    "preview": "astro build && node ./script/replacer.js && astro preview",
+    "build:deploy": "astro build && node ./script/replacer.js isDeploy=true",
     "PlatformSwitch": "node ./script/PlatformSwitcher.js"
   },
   "dependencies": {
