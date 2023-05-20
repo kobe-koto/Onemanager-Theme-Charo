@@ -3,6 +3,9 @@ import "../assets/base.css"
 import Nav from "@components/NavBar.astro"
 import Introduction from "@components/Introduction.astro"
 import Copyright from "@components/Copyright.astro"
+
+import ToastNofication from "@components/ToastNofication.astro"
+
 ---
 
 <html lang="en">
@@ -17,6 +20,9 @@ import Copyright from "@components/Copyright.astro"
 	</head>
 	<body>
 		<Nav SiteName="Charo Homepage" IconURL="/aom-assets/images/fufu512.png" />
+
+		<ToastNofication />
+
 		<main>
 			<Introduction />
 		</main>
