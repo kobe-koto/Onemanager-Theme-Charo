@@ -62,17 +62,22 @@ header {
         max-width: 105px;
         min-width: 105px;
         width: 105px;
+        @media (max-width: 340px) {
+            display: none;
+        }        
 
         > a, > span {
             transition: all .3s ease;
             cursor: pointer;
-            display: inline-block;
             border-radius: 50%;
+            
             height: 50px;
             min-width: 50px;
             max-width: 50px;
-            line-height: 50px;
-            text-align: center;
+            
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         
             &::after {
                 content: none;
@@ -116,16 +121,39 @@ header {
         max-height: 50px;
 
         .title {
-            display: flex !important;
+            display: flex;
             align-items: center;
+
             &::after {
                 content: none !important;
             }
+
             img {
                 height: 50px;
                 border-radius: 50%;
                 margin-right: 10px;
+                @media (max-width: 800px) {
+                    display: none;
+                }
             }
+
+            @media (max-width: 800px) {
+                display: inline-block;
+            }
+        }
+
+        > .CurrentDriveName {
+            @media (max-width: 800px) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 800px) {
+            display: block;
+            text-align: center;
+        }
+        @media (max-width: 340px) {
+            margin: 0 auto;
         }
 
     }
@@ -134,39 +162,8 @@ header {
         margin-left: 6px;
     }
 
-}
 
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 800px) {
-    div.Header {
-        display: block;
-        text-align: center;
-    }
-    div.Header > a.CurrentDriveName {
-        display: none;
-    }
-    a.title {
-        display: inline-block !important;
-    }
-    a.title img {
-        display: none;
-    }
-    a.title::after {
-        content: "" !important;
-    }
-}
-@media (max-width: 340px) {
-    header {
+    @media (max-width: 340px) {
         display: block;
         text-align: center;
         border-color: rgba(0,0,0,0);
@@ -174,11 +171,6 @@ header {
         width: 100%;
         margin-top: 0;
     }
-    div.Header {
-        margin: 0 auto;
-    }
-    header > span {
-        display: none;
-    }
-}
+    
 
+}

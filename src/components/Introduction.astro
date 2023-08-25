@@ -24,15 +24,17 @@
 </div>
 
 <script lang="js">
-    if ((new Date().getMonth() + 1) === 6) {                               // if it is June now.
-        // Pride June Celebration Easter
-        let c1 = "#" + Math.floor(Math.random() * 0xffffff).toString(16);  // gen first color
-	    let c2 = "#" + Math.floor(Math.random() * 0xffffff).toString(16);  // gen second color
+    addEventListener("DOMContentLoaded", function () {
+        if ((new Date().getMonth() + 1) === 6 || true) {                       // if it is June now.
+            // Pride June Celebration Easter
+            let c1 = "#" + Math.floor(Math.random() * 0xffffff).toString(16);  // gen first color
+    	    let c2 = "#" + Math.floor(Math.random() * 0xffffff).toString(16);  // gen second color
 
-    	let Target = `linear-gradient(-45deg, ${c1}, ${c2})`               // gen CSS linear gradient code
-    	console.log("Target: " + Target)
-    	document.querySelector("div.IntroductionItemLeft > h1").style.backgroundImage = Target;
-    }
+    	    let Target = `linear-gradient(-45deg, ${c1}, ${c2})`               // gen CSS linear gradient code
+    	    console.log("Target: " + Target)
+        	document.querySelector("div.IntroductionItemLeft > h1").style.backgroundImage = Target;
+        }
+    })
 </script>
 
 

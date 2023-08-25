@@ -1,10 +1,7 @@
 ---
 // container
-import ButtonContainer from "components/base/ButtonContainer.astro"
-
-// icons
-import ArrowRight from "components/fa-icons/arrow-right.astro"
-import ArrowLeft from "components/fa-icons/arrow-left.astro"
+import ButtonContainer from "./base/ButtonContainer.astro"
+import { Icon } from "astro-icon";
 ---
 
 
@@ -16,7 +13,7 @@ import ArrowLeft from "components/fa-icons/arrow-left.astro"
         <div>
             <!--PrePageStart-->
             <ButtonContainer onclick="nextpage(<!--PrePageNum-->);">
-                <ArrowLeft color="#f8f8ff" />
+                <Icon name="heroicons:arrow-left" />
             </ButtonContainer>
             <!--PrePageEnd-->
         </div>
@@ -32,7 +29,7 @@ import ArrowLeft from "components/fa-icons/arrow-left.astro"
         <div>
             <!--NextPageStart-->
             <ButtonContainer onclick="nextpage(<!--NextPageNum-->);">
-                <ArrowRight color="#f8f8ff" />
+                <Icon name="heroicons:arrow-right" />
             </ButtonContainer>
             <!--NextPageEnd-->
         </div>

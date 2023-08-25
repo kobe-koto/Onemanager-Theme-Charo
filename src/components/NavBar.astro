@@ -1,23 +1,20 @@
 ---
+	const { SiteName, IconURL } = Astro.props;
 	import ThemeSwitcher from "./base/ThemeSwitcher.astro"
 	import MultiDisk from "./MultiDisk.astro"
 	import "../assets/header.scss"
-	const { SiteName, IconURL } = Astro.props;
-	
-	// icons
-	import Login from "./fa-icons/login.astro"
-    import Menu from "./fa-icons/bars.astro"
-	import ListItem from "./fa-icons/list-item.astro";
+	import { Icon } from "astro-icon";
 ---
 
 <header>
 	<span class="left">
 		<span onclick="SideBar.Open()" title="Open Sidebar.">
-			<Menu color="#f8f8ff"/>
+			<Icon name="heroicons:bars-3" />
+			<!-- <Menu /> -->
 		</span>
 		<!--MultiDiskAreaStart-->
 			<span onclick="MultiDisk.Expand()" title="Open multi disk controller">
-				<span class="ExpandIcon" data-ControllerHidden="true"><ListItem color="#f8f8ff" /></span>
+				<span class="ExpandIcon" data-ControllerHidden="true"><Icon name="heroicons:chevron-down" /></span>
 			</span>
 		<!--MultiDiskAreaEnd-->
 	</span>
@@ -29,10 +26,10 @@
 			<span set:html={ SiteName }></span>
     	</a>
 		
-		<span onclick="MultiDisk.Expand();">
+		<span class="CurrentDriveName" onclick="MultiDisk.Expand();">
 			<!--MultiDiskAreaStart-->
 				<span id="DriveName">(CurrentDriveName)</span>
-				<span class="ExpandIcon" data-ControllerHidden="true"><ListItem color="#f8f8ff" /></span>
+				<span class="ExpandIcon" data-ControllerHidden="true"><Icon name="heroicons:chevron-down" /></span>
 			<!--MultiDiskAreaEnd-->
 		</span>
 
@@ -43,7 +40,7 @@
 			<ThemeSwitcher />
 		</span>
 		<span onclick="location.assign('/?login=admin')" title="Login">
-			<Login color="#f8f8ff"/>
+			<Icon name="heroicons:arrow-right-on-rectangle" />
 		</span>
 	</span>
 </header>

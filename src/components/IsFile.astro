@@ -1,9 +1,6 @@
 ---
 import ButtonContainer from "./base/ButtonContainer.astro";
-
-// icons
-import Copy from "./fa-icons/copy.astro";
-import Download from "./fa-icons/download.astro";
+import { Icon } from "astro-icon";
 ---
 <div style="text-align: center; width=90%;margin: 0 auto; padding: 15px 5px;">
 
@@ -15,10 +12,10 @@ import Download from "./fa-icons/download.astro";
         <!--FileEncodeUrl-->
     </code>
     <ButtonContainer href="<!--FileEncodeUrl-->">
-        <span><Download color="#f8f8ff" />&nbsp;Download<!--constStr@Download--></span>
+        <span><Icon name="heroicons:arrow-down-tray"/>&nbsp;Download<!--constStr@Download--></span>
     </ButtonContainer>
     <ButtonContainer href="<!--FileEncodeUrl-->">
-        <span><Copy color="#f8f8ff" />&nbsp;Copy URL</span>
+        <span><Icon name="heroicons:document-duplicate" />&nbsp;Copy URL</span>
     </ButtonContainer>
     <script is:inline>
         var $url = document.getElementById("url");

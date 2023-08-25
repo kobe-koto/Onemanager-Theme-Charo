@@ -14,11 +14,22 @@ body {
     background-color: #1f1f1f;
     /* #28292a */
     transition: all .45s ease;
-}
-body[theme="Light"] {
-    background-color: #f8f8ff;
-    /* #f8fafd */
-    color: #1f1f1f;
+    [astro-icon] {
+        fill: #f8f8ff;
+
+        height: 20px;
+        width: 20px;
+    }
+    
+    &[theme="Light"] {
+        background-color: #f8f8ff;
+        /* #f8fafd */
+        color: #1f1f1f;
+
+        [astro-icon] {
+            fill: #1f1f1f;
+        }
+    }
 }
 
 main {
@@ -28,10 +39,6 @@ main {
 
 div.ContentsContainer:last-child {
     margin-bottom: 0 !important;
-}
-
-body[theme="Light"] svg {
-    fill: #1f1f1f !important;
 }
 
 button {
