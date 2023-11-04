@@ -18,9 +18,7 @@ MultiDisk.Init = function () {
         ).innerHTML || "Single/NotAsTheme";
 
     try {
-        document.querySelector("a.CurrentDriveName.NoUnderline")
-            .querySelector("span#DriveName")
-            .innerHTML = MultiDisk.DiskNow
+        document.querySelector("span#DriveName").innerHTML = MultiDisk.DiskNow
     } catch (e) {
         console.info("DiskNow can't set, seems like it is Single. \r\n\r\nTraceback:\r\n"+e)
     }
