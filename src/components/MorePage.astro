@@ -4,8 +4,6 @@ import ButtonContainer from "./base/ButtonContainer.astro"
 import { Icon } from "astro-icon";
 ---
 
-
-<!--MorePageStart-->
 <form class="MorePage" action="" method="POST" id="nextpageform">
     <input type="hidden" id="pagenum" name="pagenum" value="">
 
@@ -19,11 +17,11 @@ import { Icon } from "astro-icon";
         </div>
         <div class="updated_at">
             <!--MorePageListStart-->
-                            <a onclick="nextpage(<!--PageNum-->);"><!--PageNum--></a>
+                <a onclick="nextpage(<!--PageNum-->);"><!--PageNum--></a>
             <!--MorePageListEnd-->
             
             <!--MorePageListNowStart-->
-                            <a style="font-size: larger;"><!--PageNum--></a>
+                <a style="font-size: larger;"><!--PageNum--></a>
             <!--MorePageListNowEnd-->
     </div>
         <div>
@@ -43,30 +41,31 @@ function nextpage(num) {
     document.getElementById('nextpageform').submit();
 }
 </script>
-<!--MorePageEnd-->
 
-<style>
+<style lang="scss">
     .MorePage {
         margin-top: 20px;
-    }
-    .MorePage > div {
-        width: 100%;
-        text-align: center;
-        display: flex;
-        justify-content: space-between;
-        align-items: center
-    }
-    .MorePage > div div:first-child {
-        float: left;
-        margin-right: 5px;
-    }
-    .MorePage > div div:last-child {
-        float: right;
-        margin-left: 5px;
-    }
-    .MorePage > div div:nth-child(2) {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        div {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            div {
+                &:first-child {
+                    float: left;
+                    margin-right: 5px;
+                }
+                &:last-child {
+                    float: right;
+                    margin-left: 5px;
+                }
+                &:nth-child(2) {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
     }
 </style>
