@@ -1,7 +1,5 @@
 ---
-// icons
-import Home from "./fa-icons/home.astro"
-import Slash from "./fa-icons/chevron-right.astro"
+import { Icon } from "astro-icon";
 
 // container
 import ButtonContainer from "./base/ButtonContainer.astro"
@@ -9,13 +7,13 @@ import IconContainer from "./base/IconContainer.astro"
 ---
 <div style="display: flex; align-items: center;">
     <ButtonContainer href="<!--base_path-->">
-        <Home color="#f8f8ff" />
+        <Icon name="heroicons:home" />
     </ButtonContainer>
     
     <!--DiskPathArrayStart-->
     
     <IconContainer>
-        <Slash color="#f8f8ff" />
+        <Icon name="heroicons:chevron-right" />
     </IconContainer>
     
     <ButtonContainer href="<!--PathArrayLink-->" is:raw>
