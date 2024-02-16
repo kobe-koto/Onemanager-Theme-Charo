@@ -15,8 +15,8 @@ header {
 
     /* size */
     width: 95vw;
-    max-height: 70px;
-    padding: 10px 0;
+    padding: 8px 10px;
+    box-sizing: border-box;
 
     /* apperence */
     transition: all .3s ease;
@@ -34,13 +34,67 @@ header {
     backdrop-filter: blur(25px);
 
     box-shadow:
-         1px 0px 10px rgba(0,0,0,.2),
-        -1px 0px 10px rgba(0,0,0,.2),
-         0px 1px 10px rgba(0,0,0,.2);
+         1px 0px 10px rgba(0,0,0,.1),
+        -1px 0px 10px rgba(0,0,0,.1),
+         0px 1px 10px rgba(0,0,0,.1);
 
     overflow: auto;
 
 
+
+    /* -- bottons */
+    > a, > span {
+        transition: all .25s ease;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 8px;
+            
+        padding: 10px 14px;
+            
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        
+        &::after {
+            content: none;
+        }
+        &:hover {
+            background-color: rgba(128,128,128,.5);
+        }
+        &:active {
+            transform: scale(.95);
+        }
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+
+        &::after {
+            content: none !important;
+        }
+
+        img {
+            height: 38px;
+            border-radius: 50%;
+            margin-right: 10px;
+            @media (max-width: 800px) {
+                display: none;
+            }
+        }
+    }
+    span.ExpandIcon {
+        display: inline-block;
+        transition: all 0.3s ease;
+        transform-origin: center;
+
+        &[data-is-controller-hidden="true"] {
+            transform: rotate(0.5turn);
+        }
+    }
+
+
+    /* -- ex: apperence */
     &.TopStick {
         border-color: rgba(0,0,0,0);
         border-radius: 0;
@@ -56,121 +110,5 @@ header {
             -1px 0px 10px rgba(255,255,255,.2),
             00px 1px 10px rgba(255,255,255,.2); */
     }
-
-    > span {
-        display: flex;
-        max-width: 105px;
-        min-width: 105px;
-        width: 105px;
-        @media (max-width: 340px) {
-            display: none;
-        }        
-
-        > a, > span {
-            transition: all .3s ease;
-            cursor: pointer;
-            border-radius: 50%;
-            
-            height: 50px;
-            min-width: 50px;
-            max-width: 50px;
-            
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        
-            &::after {
-                content: none;
-            }
-            &:hover {
-                background-color: rgba(128,128,128,.5);
-            }
-            &:active {
-                transform: scale(.95);
-            }
-            &:not(:last-child) {
-                margin-right: 5px;
-            }
-        }
-    }
-
-
-    span.ExpandIcon {
-        display: inline-block;
-        transition: all 0.3s ease;
-        transform-origin: center;
-
-        &[data-is-controller-hidden="true"] {
-            transform: rotate(0.5turn);
-        }
-    }
-
-
-
-    span.right {
-        margin-right: 6px;      
-    }
-
-    div.Header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 80%;
-        margin: 0 10px;
-        max-width: 1250px;
-        max-height: 50px;
-
-        .title {
-            display: flex;
-            align-items: center;
-
-            &::after {
-                content: none !important;
-            }
-
-            img {
-                height: 50px;
-                border-radius: 50%;
-                margin-right: 10px;
-                @media (max-width: 800px) {
-                    display: none;
-                }
-            }
-
-            @media (max-width: 800px) {
-                display: inline-block;
-            }
-        }
-
-        > .CurrentDriveName {
-            @media (max-width: 800px) {
-                display: none;
-            }
-        }
-
-        @media (max-width: 800px) {
-            display: block;
-            text-align: center;
-        }
-        @media (max-width: 340px) {
-            margin: 0 auto;
-        }
-
-    }
-
-    span.left {
-        margin-left: 6px;
-    }
-
-
-    @media (max-width: 340px) {
-        display: block;
-        text-align: center;
-        border-color: rgba(0,0,0,0);
-        border-radius: 0;
-        width: 100%;
-        margin-top: 0;
-    }
-    
 
 }

@@ -3,16 +3,24 @@
 ---
 
 <span class="ThemeSwitcher">
-    <span id="MoonIcon" style="display: inline-block;">
-        <Icon name="heroicons:moon" />
+    <span data-theme-role="Night" style="display: inline-block;">
+        <Icon name="heroicons:moon" />&nbsp;Dark
     </span>
-    <span id="SunIcon" style="display: none;">
-        <Icon name="heroicons:sun" />
+    <span data-theme-role="Light" style="display: none;">
+        <Icon name="heroicons:sun" />&nbsp;Light
     </span>
 </span>
 
-<style>
-    span.ThemeSwitcher {
-        padding: 10px;
+<style lang="scss">
+    .ThemeSwitcher > span {
+        display: none;
+        body[theme="Light"] [data-theme-role="Light"] {
+            display: inline-block;
+        }
+        body[theme="Night"] [data-theme-role="Night"] {
+            display: inline-block;
+        }
     }
 </style>
+
+<script src="../../assets/ThemeSwitcher.js"></script>

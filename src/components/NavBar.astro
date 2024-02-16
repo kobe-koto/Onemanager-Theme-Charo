@@ -1,24 +1,11 @@
 ---
 	const { SiteName, IconURL } = Astro.props;
-	import ThemeSwitcher from "./base/ThemeSwitcher.astro"
 	import MultiDisk from "./MultiDisk.astro"
 	import "../assets/header.scss"
 	import { Icon } from "astro-icon";
 ---
 
 <header>
-	<span class="left">
-		<span onclick="SideBar.Open()" title="Open Sidebar.">
-			<Icon name="heroicons:bars-3" />
-			<!-- <Menu /> -->
-		</span>
-		<span onclick="MultiDisk.Expand()" title="Open multi disk controller">
-			<span class="ExpandIcon" data-ControllerHidden="true"><Icon name="heroicons:chevron-down" /></span>
-		</span>
-	</span>
-
-    <div class="Header">
-
 		<a class="title" href="/">
 			<img src={ IconURL } alt="">
 			<span set:html={ SiteName }></span>
@@ -28,23 +15,29 @@
 			<span id="DriveName">(CurrentDriveName)</span>
 			<span class="ExpandIcon" data-ControllerHidden="true"><Icon name="heroicons:chevron-down" /></span>
 		</span>
-
-    </div>
-
-	<span class="right">
-		<span onclick="ThemeSwitcher.Switch();" title="Switch theme, light or dark">
-			<ThemeSwitcher />
-		</span>
-		<span onclick="location.assign('/?login=admin')" title="Login">
-			<Icon name="heroicons:arrow-right-on-rectangle" />
-		</span>
-	</span>
 </header>
 
 <!--MultiDiskAreaStart-->
 <MultiDisk />
 <!--MultiDiskAreaEnd-->
 
-<script src="../assets/ThemeSwitcher.js"></script>
-<script src="../assets/SideBar.js"></script>
+
+
+<script>
+    function OnScroll () {
+        let ScrollTop = window.scrollY;
+        if (ScrollTop > 50) {
+            document.querySelector("header").classList.add("TopStick")
+        } else {
+            document.querySelector("header").classList.remove("TopStick")
+        }
+    }
+    try {
+        addEventListener("scroll", OnScroll)
+        addEventListener("DOMContentLoaded", OnScroll)
+        console.info("[Header Sticker] inited 🎉")
+    } catch (err) {
+        console.error("[Header Sticker] cannot init because " + err);
+    }
+</script>
 

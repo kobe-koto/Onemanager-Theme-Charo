@@ -1,8 +1,10 @@
 ---
 	const { SiteName } = Astro.props;
+	import { Icon } from "astro-icon";
+	import ThemeSwitcher from "./base/ThemeSwitcher.astro";
 ---
 
-<div>
+<div class="copyright">
     <p style="font-size: larger;" set:html={SiteName}></p>
     <p>
         Powered by
@@ -17,17 +19,50 @@
         <a href="https://github.com/kobe-koto">kobe-koto</a>
         , And you.
     </p>
+    <div class="utils-btn">
+		<span onclick="ThemeSwitcher.Switch();" title="Switch theme, light or dark">
+			<ThemeSwitcher />
+		</span>
+		<span onclick="location.assign('/?login=admin')" title="Login">
+			Login <Icon name="heroicons:arrow-right-on-rectangle" />
+		</span>
+	</div>
 </div>
 
-<style>
-div {
+<style lang="scss">
+div.copyright {
     width: 100%;
     padding: 50px 0;
     background-color: rgba(40, 41, 42, .75);
     backdrop-filter: blur(25px);
     text-align: center;
-}
-body[theme="Light"] div {
-    background-color: rgba(200, 210, 220, .75);
+    .utils-btn {
+        display: flex;
+        justify-content: space-between;
+        max-width: 85%;
+        margin: 24px auto;
+        margin-bottom: 0;
+         > span {
+            transition: all .25s ease;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 6px;
+            border-color: #404040;
+            border-style: solid;
+            border-width: 1px;
+            background-color: #333;
+            padding: 8px 10px;
+            body[theme="Light"] & {
+                background-color: #ddd;
+            }
+            &:active {
+                transform: scale(.95);
+            }
+        }
+    }
+    
+    body[theme="Light"] & {
+        background-color: rgba(200, 210, 220, .75);
+    }
 }
 </style>
