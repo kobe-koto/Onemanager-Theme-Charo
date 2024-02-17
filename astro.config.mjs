@@ -1,24 +1,17 @@
 import { defineConfig } from "astro/config";
-
-import legacy from '@vitejs/plugin-legacy';
-
+import icon from "astro-icon";
 import { readFileSync } from "fs";
-const { homepage: Site } = JSON.parse(readFileSync("./package.json"));
+const { homepage: site } = JSON.parse(readFileSync("./package.json"));
 
 
 export default defineConfig({
-  output: 'static',
-  site: Site,
+  site,
+  prefetch: true,
   build: {
     format: "file",
     assets: "aom-assets/_astro"
   },
-  vite: {
-    plugins: [
-      legacy({
-        targets: ['defaults', 'not IE 11'],
-        externalSystemJS: true
-      }),
-    ]
-  }
+  integrations: [
+    icon()
+  ]
 });

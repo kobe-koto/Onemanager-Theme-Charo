@@ -14,7 +14,7 @@ body {
     background-color: #1f1f1f;
     /* #28292a */
     transition: all .45s ease;
-    [astro-icon] {
+    [data-icon] {
         fill: #f8f8ff;
         vertical-align: bottom;
 
@@ -22,7 +22,7 @@ body {
         width: 20px;
 
     }
-    [astro-icon="heroicons:chevron-down"] {
+    [data-icon="heroicons:chevron-down"] {
         margin-bottom: -0.03rem;
     }
     
@@ -31,7 +31,7 @@ body {
         /* #f8fafd */
         color: #1f1f1f;
 
-        [astro-icon] {
+        [data-icon] {
             fill: #1f1f1f;
         }
     }

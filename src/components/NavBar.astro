@@ -1,8 +1,13 @@
 ---
+    interface Props {
+        SiteName: String;
+        IconURL: URL;
+    }
 	const { SiteName, IconURL } = Astro.props;
+    
 	import MultiDisk from "./MultiDisk.astro"
 	import "../assets/header.scss"
-	import { Icon } from "astro-icon";
+	import { Icon } from "astro-icon/components";
 ---
 
 <header>
